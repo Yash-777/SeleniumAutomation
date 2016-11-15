@@ -37,7 +37,7 @@ http://docs.oracle.com/javase/8/docs/technotes/guides/javaws/developersguide/syn
 			testApp=<%= args0 %>&platform=<%= args1 %>&browser=<%= args2 %>&version=<%= args3 %>&java=<%= javaVersion %>" 
 	version="0.1">
 	
-	<information platform="<%= args1 %>">
+	<information>
 		<title> JNLP File Title for an Application </title>
 		<vendor>Yash-777 provides this Application </vendor>
 		<homepage href="<%=appURL%>"> The homepage of the application. </homepage>
@@ -81,9 +81,9 @@ http://docs.oracle.com/javase/8/docs/technotes/guides/javaws/developersguide/syn
 	
 	<!-- Runnable Jar file Main class and its input parameters -->
 	<application-desc main-class="<%= mainClassName %>" >
-		<argument>	<%= args0 %>	</argument>
-		<argument>	<%= args1 %>	</argument>
-		<argument>	<%= args2 %>	</argument>
-		<argument>	<%= args3 %>	</argument>
+		<argument><%= args0 %></argument>
+		<argument><%= args1 %></argument>
+		<argument><%= args2 %></argument>
+		<argument><%= args3 %></argument>
 	</application-desc>	
 </jnlp>
