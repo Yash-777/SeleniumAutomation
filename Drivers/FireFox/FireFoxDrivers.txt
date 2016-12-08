@@ -1,0 +1,2 @@
+Based on the browser version it will download the XPI extension and stores locally,
+Before downloading it checks locally driver available or not, if not available downloads.

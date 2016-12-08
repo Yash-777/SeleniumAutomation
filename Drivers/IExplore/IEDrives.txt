@@ -1,0 +1,4 @@
+If their is no driver available in local machine then it is going to download from the
+provided selenium version IE driver and maintains locally.
+
+IF locally driver executable is not available then it will download.
