@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.github.web.automation;
 
 import java.awt.Rectangle;
@@ -223,7 +220,7 @@ public class Browser extends Platform {
 	// http://selenium-release.storage.googleapis.com/2.53/IEDriverServer_Win32_2.53.0.zip
 	// http://selenium-release.storage.googleapis.com/2.53/IEDriverServer_x64_2.53.0.zip
 	// http://chromedriver.storage.googleapis.com/2.24/chromedriver_win32.zip
-	// https://github.com/Yash-777/selenium/raw/master/py/selenium/webdriver/firefox/webdriver.xpi
+	// https://github.com/Yash-777/SeleniumDrives/raw/master/py/selenium/webdriver/firefox/webdriver.xpi
 				String ZIPFolder = null;
 				String driverZIPURL = null;
 				boolean isDriverExists = false;
