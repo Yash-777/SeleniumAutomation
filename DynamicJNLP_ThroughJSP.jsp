@@ -29,12 +29,13 @@ http://IP:PORT/ApplicationName/DynamicJNLP_ThroughJSP.jsp?testApp=https://github
 
 This is the main xml element for a jnlp file. Everything [like describes application and its resources...] is contained within the jnlp element.
 http://docs.oracle.com/javase/8/docs/technotes/guides/javaws/developersguide/syntax.html
+
+jnlp href - all values must be provided here and their should be no spacess in between parameters.
 -->
 <jnlp 
 	spec="1.0+" 
 	codebase="<%=appURL%>" 
-	href="<%=ApplicationName%>/DynamicJNLP_ThroughJSP.jsp?
-			testApp=<%= args0 %>&platform=<%= args1 %>&browser=<%= args2 %>&version=<%= args3 %>&java=<%= javaVersion %>" 
+	href="<%=ApplicationName%>/DynamicJNLP_ThroughJSP.jsp?testApp=<%= args0 %>&platform=<%= args1 %>&browser=<%= args2 %>&version=<%= args3 %>&java=<%= javaVersion %>" 
 	version="0.1">
 	
 	<information>
