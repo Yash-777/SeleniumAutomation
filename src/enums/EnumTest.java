@@ -1,10 +1,16 @@
 package enums;
 
+import java.io.File;
 import java.lang.reflect.Field;
+import java.security.ProtectionDomain;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.openqa.selenium.net.NetworkUtils;
 
 /**
  * An enum type is a special data type 
@@ -118,6 +124,66 @@ public class EnumTest {
 		public int getId() {	return id;	}
 		public String getDay() {	return day;	}
 	}
+	
+	enum PlatformApp {
+
+		OSName () {
+			@Override public String toString() {
+				String version = System.getProperty("os.version", "0.0.0");
+				int major = 0;
+				int min = 0;
+
+				Pattern pattern = Pattern.compile("^(\\d+)\\.(\\d+).*");
+				Matcher matcher = pattern.matcher(version);
+				if (matcher.matches()) {
+					try {
+						major = Integer.parseInt(matcher.group(1));
+						min = Integer.parseInt(matcher.group(2));
+					} catch (NumberFormatException e) { }
+				}
+				
+				System.out.println("SystemArchitecture : "+ System.getProperty("os.arch"));
+				System.out.println("BIT Version : "+ version);
+				System.out.format("Majour : %d Minor : %d \n", major , min);
+				
+				return System.getProperty("os.name").toUpperCase();
+			}
+		},
+		codePath () {
+			@Override
+			public String toString() {
+				ProtectionDomain protectionDomain = PlatformApp.class.getProtectionDomain();
+				final File codePath = new File( protectionDomain.getCodeSource().getLocation().getPath() );
+				System.out.println("Source CODE Path : "+codePath);
+				return codePath.getPath();
+			}
+		},
+		classPath () {
+			@Override public String toString() {
+				String classpath = System.getProperty("java.class.path");
+				String[] classpathEntries = classpath.split( File.pathSeparator );
+				String[] library = new String[ classpathEntries.length ];
+				
+				for ( int i = 0, j = 0; i < classpathEntries.length; i++ ) {
+					if( !classpathEntries[i].equals( codePath ) 
+							&& classpathEntries[i].contains("lib") ) {
+						library[ j++ ] = classpathEntries[i];
+						System.out.format("%d : %s \n", i, classpathEntries[i] );
+					}
+				}
+				return super.toString();
+			}
+		},
+		
+		hostIP () {
+			@Override public String toString() {
+				NetworkUtils utils = new NetworkUtils();
+				String host = utils.getIp4NonLoopbackAddressOfThisMachine().getHostAddress();
+				return host;
+			}
+		};
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("KEY's < ");
 		System.out.println("F : " + constats.FIREFOX);
@@ -148,5 +214,7 @@ public class EnumTest {
 			System.out.println("DAY : "+field.getName());
 		}
 		
+		System.out.println("Platfrom \n -------\n OS : "+ PlatformApp.OSName);
+		System.out.println(" HOST IP : "+PlatformApp.hostIP);
 	}
 }

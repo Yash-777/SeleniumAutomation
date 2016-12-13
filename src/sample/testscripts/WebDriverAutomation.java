@@ -38,7 +38,7 @@ public class WebDriverAutomation extends Browser {
 		browserObj.test();*/
 		
 		try {
-			WebDriverAutomation enumProps = new WebDriverAutomation( LocalBrowser.CHROME );
+			WebDriverAutomation enumProps = new WebDriverAutomation( LocalBrowser.FIREFOX );
 			enumProps.initialSetUP();
 			enumProps.test();
 		} catch (Exception e) {
@@ -48,7 +48,7 @@ public class WebDriverAutomation extends Browser {
 	
 	public void test() {
 		
-		this.new OpenCartLogin().Test();
+		this.new OpenCartLogin().loginTest();
 		
 		String version = responseCaps.getVersion();
 		Object json = responseCaps.getCapability( responseCaps.getBrowserName() );
@@ -89,7 +89,7 @@ public class WebDriverAutomation extends Browser {
 		
 		String lastEle = "/html/body/footer/div/div/div[4]/h5";
 		
-		public void Test() {
+		public void loginTest() {
 			driver.get( appURL );
 			
 			/* Put an Implicit wait, this means that any search for elements on the page could take 
