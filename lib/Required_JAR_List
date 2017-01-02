@@ -1,5 +1,12 @@
-https://mvnrepository.com/artifact/commons-io/commons-io/2.5
-commons-io-2.5.jar
-
 selenium-server-standalone-2.53.0.jar
+	MVN « https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server/2.53.0
 
+commons-io-2.5.jar
+	MVN « https://mvnrepository.com/artifact/commons-io/commons-io/2.5
+
+xuggle-xuggler [xuggle-xuggler-5.4.jar] « https://github.com/artclarke/xuggle-xuggler/blob/master/ivy.xml
+	MVN « https://mvnrepository.com/artifact/xuggle/xuggle-xuggler
+	Mirrors « https://files.liferay.com/mirrors/xuggle.googlecode.com/svn/trunk/repo/share/java/xuggle/xuggle-xuggler/5.4/
+
+SLF4J [slf4j-api-1.6.4.jar] « http://www.slf4j.org/download.html
+	MVN : https://mvnrepository.com/artifact/org.slf4j/slf4j-api
