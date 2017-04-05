@@ -151,6 +151,8 @@ public class Browser extends BrowserDrivers {
 										UnexpectedAlertBehaviour.DISMISS);
 			driver = new InternetExplorerDriver(capabilities);
 			break;
+		default:
+			break;
 		}
 		
 		responseCaps = ( (RemoteWebDriver) driver ).getCapabilities();

@@ -3,6 +3,16 @@ package com.github.gridlauncher;
 import org.openqa.grid.internal.utils.GridHubConfiguration;
 import org.openqa.grid.web.Hub;
 
+/**
+ * 
+ * <UL> <B>Use GRID HUB Server:</B>
+ * <LI> To distribute your tests over multiple machines or virtual machines (VMs).
+ * <LI> You want to connect to a remote machine that has a particular 
+ * browser version that is not on your current machine.
+ * 
+ * @author yashwanth.m
+ *
+ */
 public class Grid_HUBServer {
 	
 	public static String HUBIP = GRIDINFO.HOSTIP.toString();

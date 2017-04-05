@@ -44,8 +44,8 @@ public class Grid_NODEServer extends Grid_HUBServer {
 			
 			configuration.put(RegistrationRequest.PROXY_CLASS, PROXYCLASS);
 			configuration.put(RegistrationRequest.MAX_SESSION, 1);
-			configuration.put(RegistrationRequest.CLEAN_UP_CYCLE, 2000);
-			configuration.put(RegistrationRequest.MAX_INSTANCES, 1);
+			//configuration.put(RegistrationRequest.CLEAN_UP_CYCLE, 2000);
+			//configuration.put(RegistrationRequest.MAX_INSTANCES, 1);
 
 			request.setConfiguration( configuration );
 			GridNodeServer node = new SeleniumServer( request.getConfiguration() );
