@@ -27,6 +27,12 @@ public enum GRIDINFO {
 			return GRIDINFO.PROJECTPATH.toString()+"/Drivers/IExplore/32/IEDriverServer.exe";
 		}
 	},
+	// https://github.com/operasoftware/operachromiumdriver/issues/11
+	OPERA_DRIVER_EXE () {
+		@Override public String toString() {
+			return GRIDINFO.PROJECTPATH.toString()+"/Drivers/Opera/operadriver.exe";
+		}
+	},
 	NDOEJSON () {
 		@Override public String toString() {
 			File JOSNFile = new File( GRIDINFO.PROJECTPATH.toString()+"/registerNode.json" );

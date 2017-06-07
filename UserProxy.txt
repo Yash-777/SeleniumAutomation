@@ -1,0 +1,43 @@
+
+HUB  « java -cp *;. org.openqa.grid.selenium.GridLauncher -role hub -port 4454
+NODE « java -cp *;. org.openqa.grid.selenium.GridLauncher -role node -hub http://localhost:4454/grid/register -browser  "browserName=firefox, version=39.0, firefox_binary=C:\Program Files (x86)\Mozilla Firefox\firefox.exe, maxinstance=2, platform=WINDOWS" -browser  "browserName=chrome, version=54.0, platform=WINDOWS" -browser  "browserName=internet explorer, version=11, platform=WINDOWS" -Dwebdriver.ie.driver="D:\\Drivers\\IEDrivers\\iedriver64\\IEDriverServer.exe" -Dwebdriver.chrome.driver="D:\\Drivers\\chromedrivers\\2.24\\chromedriver.exe" -proxy com.github.gridlauncher.UserProxy
+
+HUB   « java -jar selenium-server-standalone-2.53.0.jar -port 4454 -role hub
+NODE  « java -jar selenium-server-standalone-2.53.0.jar -port 4456 -role node -hub http://localhost:4454/grid/register -browser  "browserName=firefox, version=39.0, firefox_binary=C:\Program Files (x86)\Mozilla Firefox\firefox.exe, maxinstance=2, platform=WINDOWS" -browser  "browserName=chrome, version=54.0, platform=WINDOWS" -browser  "browserName=internet explorer, version=11, platform=WINDOWS" -Dwebdriver.ie.driver="D:\\Drivers\\IEDrivers\\iedriver64\\IEDriverServer.exe" -Dwebdriver.chrome.driver="D:\\Drivers\\chromedrivers\\2.24\\chromedriver.exe"
+
+Proxy Configuration:
+	http://www.seleniumhq.org/docs/05_selenium_rc.jsp#proxy-configuration
+
+Adding a custom Proxy:
+	http://www.seleniumhq.org/docs/07_selenium_grid.jsp#adding-a-custom-proxy
+
+XPI:
+	https://github.com/mguillem/JSErrorCollector
+	
+java -jar selenium-server-standalone-2.53.0.jar -port 4454 -role hub -log HUB_Log.txt
+
+java -jar selenium-server-standalone-2.53.0.jar -port 5555 -role node -hub http://localhost:4454/grid/register -log FirefoxBrowser.log -browserSideLog FirefoxBrowser.log -browser  "browserName=firefox, version=39.0, firefox_binary=C:\Program Files (x86)\Mozilla Firefox\firefox.exe, maxinstance=2, platform=WINDOWS"
+
+java -jar selenium-server-standalone-2.53.0.jar -port 4456 -role node -hub http://localhost:4454/grid/register 
+-browser  "browserName=firefox, version=39.0, firefox_binary=C:\Program Files (x86)\Mozilla Firefox\firefox.exe, maxinstance=2, platform=WINDOWS" 
+-browser  "browserName=chrome, version=54.0, platform=WINDOWS" 
+-browser  "browserName=internet explorer, version=11, platform=WINDOWS" 
+-Dwebdriver.ie.driver="D:\\Drivers\\IEDrivers\\iedriver64\\IEDriverServer.exe" 
+-Dwebdriver.chrome.driver="D:\\Drivers\\chromedrivers\\2.24\\chromedriver.exe" 
+-Dwebdriver.firefox.logfile="D:\\1PROXY\\FirefoxInstance.txt" -Dwebdriver.chrome.logfile="D:\\1PROXY\\ChromeInstance.txt" -Dwebdriver.ie.logfile="D:\\1PROXY\\IEInstance.txt" -browserSideLog FirefoxBrowser.log
+
+
+
+GRID HUB:
+java -cp *;. org.openqa.grid.selenium.GridLauncher -role hub -port 4454 -log HUB_Log.txt
+
+GRID NODE:
+java -cp *;. org.openqa.grid.selenium.GridLauncher -role node -port 5555
+-hub http://localhost:4444/grid/register 
+-browser  "browserName=firefox, version=39.0, firefox_binary=C:\Program Files (x86)\Mozilla Firefox\firefox.exe, maxinstance=2, platform=WINDOWS" 
+-proxy com.github.gridlauncher.UserProxy 
+-Dwebdriver.firefox.logfile="D:\\FirefoxInstance.log"
+
+Phython Code:
+	https://github.com/seleniumhq/selenium/issues/1161#issuecomment-161976565
+	http://stackoverflow.com/questions/12417967/set-proxy-socks-port-selenium

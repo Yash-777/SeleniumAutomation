@@ -24,10 +24,37 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.github.server.file.FileFromURL;
 import com.github.server.file.ZIPExtracter;
 
+/**
+ * This class makes driver automation. If the driver is not available in the Application path
+ * then it is going to download from the cloud and saves to application Drivers directory and
+ * servers from that location.
+ * 
+ * <UL> DRIVERS:
+ * <LI> <B>Firefox</B> - <I>Firefox driver is included in the selenium-server-standalone.jar 
+ * available in the downloads</I></LI>
+ * <LI> <B>Internet Explorer</B> - <I>The InternetExplorerDriver is a standalone server 
+ * which implements WebDriver's wire protocol.</I>
+ * <p><b>Note:</b> Use only 32 bit IE driver to increase performance in SendKeys, Screenshot and Links.</p></LI>
+ * <LI> <B>Chrome</B> - <I>ChromeDriver is a standalone server which implements WebDriver's 
+ * wire protocol for Chromium.</I></LI>
+ * <LI> <B>Opera</B> - <I>OperaDriver is a vendor-supported WebDriver implementation developed
+ *  by Opera Software and volunteers that implements WebDriver API for Opera.</I>
+ * 	<UL> <B><a href="https://stackoverflow.com/a/31586683/5081877" >OperaChromiumDriver:</a></B>
+ * 		<LI>OperaChromiumDriver is a WebDriver implementation derived from ChromeDriver 
+ *  and adapted by Opera. http://www.opera.com/docs/history/</LI>
+ *  </UL>
+ * </LI>
+ * <LI> <B>Safari</B> - <I>The SafariDriver is implemented as a Safari browser extension.
+ * The driver inverts the traditional client/server relationship and communicates with the 
+ * WebDriver client using WebSockets.</I></LI>
+ * 
+ * @author yashwanth.m
+ *
+ */
 public class BrowserDrivers extends Platform {
 
 	public enum LocalBrowser {
-		FIREFOX, CHROME, IEXPLORE;
+		FIREFOX, CHROME, OPERA, IEXPLORE;
 	}
 	
 	protected LocalBrowser browserName;
@@ -52,6 +79,9 @@ public class BrowserDrivers extends Platform {
 	// http://selenium-release.storage.googleapis.com/2.53/IEDriverServer_x64_2.53.0.zip
 	// http://chromedriver.storage.googleapis.com/2.24/chromedriver_win32.zip
 	// https://github.com/Yash-777/SeleniumDrives/raw/master/py/selenium/webdriver/firefox/webdriver.xpi
+	
+	// For now to drive the Chromium-based Opera you�ll need to use the RemoteWebDriver
+	// https://github.com/operasoftware/operachromiumdriver/releases/download/v0.2.2/operadriver_win32.zip
 				String ZIPFolder = null;
 				String driverZIPURL = null;
 				boolean isDriverExists = false;
@@ -59,15 +89,15 @@ public class BrowserDrivers extends Platform {
 				switch ( browserName ) {
 				
 				case IEXPLORE:
-				if( true ) {
 					String IE_DRIVER_Storage = "http://selenium-release.storage.googleapis.com";
 					Matcher m = Pattern.compile("(\\d+.\\d+).(\\d+)").matcher(seleniumVersion);
 					String IE_Pack = null;
 					if( m.find() ) IE_Pack = m.group(1);
 					System.out.println("IE Selenium Package : "+IE_Pack);
 					
+					// Use only 32 bit IE driver to increase performance in SendKeys, Screenshot and Links.
 					if( IE_Pack != null) {
-					if ( jvmBitVersion.equalsIgnoreCase("64") ) { // IEDriverServer_x64_2.53.0.zip
+					if ( jvmBitVersion.equalsIgnoreCase("64 - Performance Increase") ) { // IEDriverServer_x64_2.53.0.zip
 						driverZIPURL = String.format("%s/%s/IEDriverServer_x64_%s.zip",
 									IE_DRIVER_Storage, IE_Pack, seleniumVersion);
 						ZIPFolder = ZIPFile.toString() + "IExplore/64";
@@ -89,10 +119,8 @@ public class BrowserDrivers extends Platform {
 						System.out.println("IE Driver Exists Locally : "+driverEXEPath);
 					}
 					}
-				}
 				break;
 				case CHROME:
-				if( true ) {
 					String CHROME_Driver_storage = "http://chromedriver.storage.googleapis.com";
 					if ( browserVersion != null && !"".equalsIgnoreCase( browserVersion ) ) {
 						driverZIPURL = String.format("%s/%s/chromedriver_win32.zip",
@@ -113,8 +141,24 @@ public class BrowserDrivers extends Platform {
 					} else {
 						ZIPFile.append("/chromedriver_win32.zip");
 					}
-				}
 				break;
+				case OPERA:
+					driverZIPURL = 
+					"https://github.com/operasoftware/operachromiumdriver/releases/download/v0.2.2/operadriver_win32.zip";
+					
+					ZIPFolder = ZIPFile.append("Opera").toString();
+					
+					createDirectory( ZIPFolder );
+					
+					File OperaFile = new File( ZIPFolder+"/operadriver.exe");
+					if ( OperaFile.exists() ) {
+						isDriverExists = true;
+						driverEXEPath = OperaFile.getAbsolutePath();
+						System.out.println("Opera Driver Exists Locally : "+driverEXEPath);
+					} else {
+						ZIPFile.append("/operadriver_win32.zip");
+					}
+					break;
 				case FIREFOX:
 					StringBuffer extensionURL = new StringBuffer();
 					extensionURL.append("https://github.com/Yash-777/SeleniumDrives/raw/master/py/selenium/webdriver/firefox/");
@@ -174,7 +218,7 @@ public class BrowserDrivers extends Platform {
 						System.out.println("Downloading from server...");
 						new FileFromURL( driverZIPURL ).downloadUsing_NIOChannel( driverZIPLocal );
 						driverEXEPath = new ZIPExtracter().exratctFileList( driverZIPLocal, ZIPFolder);
-						System.out.println("Successfully got the driver from server.");
+						System.out.println("Successfully got the driver from server.\n\t"+driverEXEPath);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -226,7 +270,7 @@ public class BrowserDrivers extends Platform {
 		
 		// FF - Change File Name with ImageFolder.getsession().time.png
 		/**
-		 * <UL> Fire Fox console.
+		 * <UL> FireFox console.
 	<LI>FullPage « screenshot d:\yash.png --delay 1 --fullpage
 	<LI>Window   « screenshot d:\\yash.png --chrome
 	<LI>Element  « screenshot d:\\yash.png --delay 0 --selector  #toc

@@ -16,6 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerDriverService;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -66,6 +67,11 @@ public class Browser extends BrowserDrivers {
 				System.out.println("IEXPLORE");
 				this.browserVersion = props.getProperty("I_Version");
 				this.binaryPath = props.getProperty("I_Binary");
+				break;
+			case OPERA:
+				System.out.println("OPERA");
+				this.browserVersion = props.getProperty("O_Version");
+				this.binaryPath = props.getProperty("O_Binary");
 				break;
 			default:
 				throw new Exception("No enum constant > UN Suppoeted Browser.");
@@ -149,7 +155,38 @@ public class Browser extends BrowserDrivers {
 			
 			capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
 										UnexpectedAlertBehaviour.DISMISS);
+			if ( jvmBitVersion.equalsIgnoreCase("64") ) {
+				capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
+			}
+			
 			driver = new InternetExplorerDriver(capabilities);
+			break;
+		case OPERA:
+			// https://stackoverflow.com/a/31586683/5081877
+			System.setProperty("webdriver.opera.driver", driverEXEPath);
+			
+			// https://sny.no/2011/10/capabilities
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			//capabilities.setCapability("opera.binary", binaryPath);
+			capabilities.setCapability("opera.no_quit", false);
+			
+			/*ChromeOptions options_Opera = new ChromeOptions();
+			options_Opera.setBinary( binaryPath );
+			String[] arguments_Opera = {"--use-fake-ui-for-media-stream","--ignore-certificate-errors"};
+			options_Opera.addArguments(arguments_Opera);
+			options_Opera.addArguments("chrome.switches", "--disable-extensions");
+			
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options_Opera);
+			capabilities.setCapability("opera.logging.level", "ALL");
+			
+			File logFile = new File(logFiles+"operadriver.log");
+			System.out.println("Log file : "+logFile.toString());
+			capabilities.setCapability("opera.loggin.file", logFile.toString());
+			capabilities.setCapability("opera.port", 0);
+			capabilities.setCapability("opera.launcher", binaryPath);
+			capabilities.setCapability("opera.no_restart", true);*/
+			
+			driver = new OperaDriver(capabilities);
 			break;
 		default:
 			break;
