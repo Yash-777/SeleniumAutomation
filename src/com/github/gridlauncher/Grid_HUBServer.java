@@ -10,6 +10,18 @@ import org.openqa.grid.web.Hub;
  * <LI> You want to connect to a remote machine that has a particular 
  * browser version that is not on your current machine.
  * 
+ * http://www.eclipse.org/jetty/
+ * 
+ * http://docs.seleniumhq.org/docs/07_selenium_grid.jsp
+ * 
+ * Selenium-Grid 2.0 - Configuring Selenium-Grid
+ * 		« org.openqa.grid.internal.utils.GridHubConfiguration;
+ * 		« org.openqa.selenium.server.SeleniumServer;
+ * 
+ * Selenium 3 - org.seleniumhq.jetty9.server.Server - Started @1026ms
+ * 		« org.openqa.grid.internal.utils.configuration.GridHubConfiguration;
+ * 		« hub configuration json file
+ * 
  * @author yashwanth.m
  *
  */

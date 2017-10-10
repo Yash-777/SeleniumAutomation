@@ -1,46 +1,47 @@
 package sample.testscripts;
 
-import java.io.IOException;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.github.web.automation.Browser;
+import com.github.web.automation.PageActions;
+import com.github.web.automation.Verifications.ByType;
 
+import enums.LocalBrowser;
 
-public class WebDriverAutomation extends Browser {
-	public WebDriverAutomation(LocalBrowser driver) throws Exception {
-		super(driver);
+public class WebDriverAutomation {
+	
+	static RemoteWebDriver driver;
+	Browser browser;
+	public WebDriverAutomation(Browser browser) throws Exception {
+		this.browser = browser;
 	}
 	
-	public WebDriverAutomation(LocalBrowser browserName, String browserVersion,
-			String binaryPath, String driverPath,
-			String seleniumVersion, String chromeDriverPack) {
-		super(browserName, browserVersion, binaryPath, driverPath,
-				seleniumVersion, chromeDriverPack);
-	}
-	
+	static LocalBrowser browserType = LocalBrowser.CHROME;
 	public static void main(String[] args) {
 
-		/*String browserVersion = "54";
-		String binaryPath = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";
-		String driverPath = null;
-		String seleniumVersion = "2.53.0";
-		String chromeDriverPack = "2.24";
-		
-		WebDriverAutomation browserObj = new WebDriverAutomation(LocalBrowser.CHROME, browserVersion, binaryPath, driverPath, seleniumVersion, chromeDriverPack );
-		browserObj.initialSetUP();
-		browserObj.test();*/
-		
 		try {
-			WebDriverAutomation enumProps = new WebDriverAutomation( LocalBrowser.FIREFOX );
-			enumProps.initialSetUP();
+			String browserVersion = "52";
+			String binaryPath = "C:\\Users\\yashwanth.m\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe";
+			String driverPath = null;
+			String seleniumVersion = "2.53.0";
+			String chromeDriverPack = "2.23";
+			Browser browserObj = new Browser(LocalBrowser.CHROME, browserVersion,
+					binaryPath, driverPath, seleniumVersion, chromeDriverPack );
+			
+			//Browser browserObj = new Browser(browserType);
+			
+			System.out.println( browserObj.toString() );
+			RemoteWebDriver webDriver = browserObj.getWebDriver();
+			driver = webDriver;
+			
+			WebDriverAutomation enumProps = new WebDriverAutomation( browserObj );
 			enumProps.test();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -48,16 +49,17 @@ public class WebDriverAutomation extends Browser {
 	
 	public void test() {
 		
-		this.new OpenCartLogin().loginTest();
+		this.new OpenCartLoginInner().loginTest();
 		
-		String version = responseCaps.getVersion();
-		Object json = responseCaps.getCapability( responseCaps.getBrowserName() );
+		String version = browser.responseCaps.getVersion();
+		Object json = browser.responseCaps.getCapability( browser.responseCaps.getBrowserName() );
 		
 		System.out.println("JSON : "+json+"\n version : "+version);
+		System.out.println("Enter something in console to quit the browser and driver.");
 		try {
 			System.in.read();
 			System.in.read();
-		} catch (IOException e) {
+		} catch (java.io.IOException e) {
 			e.printStackTrace();
 		}
 		
@@ -73,7 +75,7 @@ public class WebDriverAutomation extends Browser {
 		}
 	}
 	
-	class OpenCartLogin {
+	class OpenCartLoginInner {
 		String appURL = "http://demo.opencart.com/index.php?route=account/login";
 		
 		String userName = "//*[@id='input-email']";
@@ -91,72 +93,28 @@ public class WebDriverAutomation extends Browser {
 		
 		public void loginTest() {
 			driver.get( appURL );
-			
-			/* Put an Implicit wait, this means that any search for elements on the page could take 
-			the time the implicit wait is set for before throwing exception.
-			http://toolsqa.com/selenium-webdriver/switch-commands/ */
-			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
-			String title = driver.getTitle();
 			
+			String title = driver.getTitle();
 			System.out.println("Application Title : "+title);
 			
-			WebElement user = driver.findElement(By.xpath( userName ));
-			user.clear();
-			user.sendKeys(userKey);
+			PageActions page = new PageActions( driver, true, browserType );
+			System.out.println("Page Obj : "+ page.hashCode());
+			boolean name = page.sendText( userName, ByType.XPATH_EXPRESSION, userKey );
+			System.out.println("Text Sent : "+name);
 			
-			screen.takeElementScreenshot(user);
+			boolean pass = page.sendText( password, ByType.XPATH_EXPRESSION, secretKey );
+			System.out.println("Text Sent : "+pass);
 			
-			WebElement secret = driver.findElement(By.xpath( password ));
-			secret.sendKeys(secretKey);
+			boolean loginbutton = page.clickOnElement( login, ByType.XPATH_EXPRESSION );
+			System.out.println("Element Clicked : "+loginbutton);
 			
-			screen.takeElementScreenshot(secret);
+			browser.sleepThread( 1000 * 2 );
 			
-			WebElement loginbutton = driver.findElement(By.xpath( login ));
+			boolean text = page.verifyText( verify, ByType.XPATH_EXPRESSION, verifyText);
+			System.out.println("Text Sent : "+text);
 			
-			screen.takeElementScreenshot(loginbutton);
-			loginbutton.click();
-			sleepThread( 1000 * 2 );
-			
-			WebElement data = driver.findElement(By.xpath( verify ));
-			String text = data.getText();
-			System.out.println("Text My Order ["+text+"]");
-			
-			if( text.equals( verifyText ) ) {
-				drawBorder(verify, "green");
-			} else {
-				drawBorder(verify, "red");
-			}
-			
-			screen.takeElementScreenshot(data);
-			
-			WebElement view = driver.findElement(By.xpath( lastEle ));
-			screen.takeElementScreenshot(view);
 		}
 		
-		/** 
-		 * To highlight an element, it takes XPath and draw border around it.
-		 * 
-		 * @param xpath
-		 * @param color the color around 
-		 */
-		public void drawBorder(String xpath, String color){
-			WebElement element_node = driver.findElement(By.xpath(xpath));
-			String elementStyle = "arguments[0].style.border='3px solid "+color+"'";
-			if (driver.getClass().getName().contains("ie")) {
-				jse.executeScript(elementStyle, element_node);
-			}else {
-				try {
-					jse.executeScript(
-					"if (document.evaluate){"
-						+ "var element_node = document.evaluate('"+xpath+"', window.document, null, 9, null ).singleNodeValue;"
-						+ "element_node.style.setProperty ('border', '3px solid "+color+"', 'important');"
-					+"}"
-						);
-				} catch (Exception draw) {
-					jse.executeScript(elementStyle, element_node);
-				}
-			}
-		}
 	}
 }

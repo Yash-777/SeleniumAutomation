@@ -1,0 +1,5 @@
+
+https://github.com/saucelabs-sample-test-frameworks
+
+https://endtest.io/
+https://loadfocus.com/blog/2013/09/05/how-to-locate-web-elements-with-selenium-webdriver/

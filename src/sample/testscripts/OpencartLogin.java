@@ -11,11 +11,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.github.gridlauncher.GRIDINFO;
 
+/**
+ * https://demo.opencart.com/index.php?route=product/product&path=25_28&product_id=42
+ * 
+ * https://demo.opencart.com/index.php?route=product/product&product_id=41
+ * 
+ * @author yashwanth.m
+ *
+ */
 public class OpencartLogin {
 	public RemoteWebDriver driver;
+	//public WebDriver driver;
 
 	String appURL = "http://demo.opencart.com/index.php?route=account/login";
 	
@@ -28,13 +39,16 @@ public class OpencartLogin {
 	String login = "//*[@id='content']/div/div[2]/div/form/input";
 	
 	String verify = "/html/body/div[2]/div[1]";
-	String verifyText = "Warning: No match for E-Mail Address and/or Password.";
+	String verifyText = 
+			//"Warning: No match for E-Mail Address and/or Password.";
+			"Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";
 	
 	public static void main(String[] args) {
 		try {
 			OpencartLogin test = new OpencartLogin();
-			
-			URL url = new URL( String.format("http://%s:4444/wd/hub", GRIDINFO.HOSTIP.toString() ));
+
+			URL url = 
+					new URL( String.format("http://%s:4444/wd/hub", GRIDINFO.HOSTIP.toString() ));
 			DesiredCapabilities caps_IE = DesiredCapabilities.internetExplorer();
 			caps_IE.setVersion("11");
 			caps_IE.setPlatform(Platform.WINDOWS);
@@ -46,26 +60,48 @@ public class OpencartLogin {
 			DesiredCapabilities caps_FF = DesiredCapabilities.firefox();
 			caps_FF.setVersion("39.0");
 			caps_FF.setPlatform(Platform.WINDOWS);
+			caps_FF.setCapability("name","YashTest2");
 			
-			test.driver = new RemoteWebDriver(url, caps_FF);
-			test.loginTest();
+			DesiredCapabilities caps = DesiredCapabilities.firefox();
+			caps.setCapability("platform","win7");
+			caps.setCapability("version","39");
+			caps.setCapability("secnarioname","Yash_W7_FF39_1");
+			
+			RemoteWebDriver driver = 
+							//new FirefoxDriver();
+							//new RemoteWebDriver(url, caps);
+					new RemoteWebDriver(new URL("http://testuser:f5d4d6a5-dc12-4c96-8563-e7241f9f732a@predev.clictest.com:9091/ClicHub/wd/hub"),caps);
+			
+			test.loginTest( driver );
+			test.quitDriver();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
+		} catch (org.openqa.selenium.UnsupportedCommandException e) {
+			System.err.println("HTTP Status 403 - Access to the requested resource has been denied | forbidden");
+			System.err.println("Wrong Credentials. "+e.getMessage());
 		}
 	}
 	
-	public void loginTest( ) {
+	public void loginTest( RemoteWebDriver driver ) {
 		try {
+			this.driver = driver;
+			
 			driver.get( appURL );
 			
 			/* Put an Implicit wait, this means that any search for elements on the page could take 
 			the time the implicit wait is set for before throwing exception.
 			http://toolsqa.com/selenium-webdriver/switch-commands/ */
-			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
-			String title = driver.getTitle();
 			
-			System.out.println("Application Title : "+title);
+			// wait up to 10 seconds for the Codes detail page to load
+			(new WebDriverWait(driver, 10)).until( new ExpectedCondition<Boolean>() {
+				public Boolean apply(WebDriver driver) {
+					String title = driver.getTitle();
+					System.out.println("Application Title : "+title);
+					return title.equals("Account Login");
+				}
+			});
 			
 			WebElement user = driver.findElement(By.xpath( userName ));
 			user.sendKeys(userKey);
@@ -80,19 +116,19 @@ public class OpencartLogin {
 			String text = data.getText();
 			System.out.println("Text My Order ["+text+"]");
 			
-			if( text.equals( verifyText ) ) {
+			if( text.equalsIgnoreCase( verifyText ) ) {
 				drawBorder(verify, "green");
 			} else {
 				drawBorder(verify, "red");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			driver.close();
-			driver.quit();
 		}
 	}
-	
+	public void quitDriver() {
+		driver.close();
+		driver.quit();
+	}
 	/** 
 	 * To highlight an element, it takes XPath and draw border around it.
 	 * 

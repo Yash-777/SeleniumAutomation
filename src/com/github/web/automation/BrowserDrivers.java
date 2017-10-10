@@ -24,6 +24,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.github.server.file.FileFromURL;
 import com.github.server.file.ZIPExtracter;
 
+import enums.LocalBrowser;
+
 /**
  * This class makes driver automation. If the driver is not available in the Application path
  * then it is going to download from the cloud and saves to application Drivers directory and
@@ -53,21 +55,18 @@ import com.github.server.file.ZIPExtracter;
  */
 public class BrowserDrivers extends Platform {
 
-	public enum LocalBrowser {
-		FIREFOX, CHROME, OPERA, IEXPLORE;
-	}
-	
 	protected LocalBrowser browserName;
 	protected String browserVersion;
-	protected String binaryPath;
+	protected String binaryPath, browserExtension;
 	protected String driverEXEPath;
 	protected String chromeDriverVersion;
 	protected String seleniumVersion;
+	protected Boolean useExtensions = false, privatebrowsing = false; // https://stackoverflow.com/a/36332841/5081877
 	
 	protected RemoteWebDriver driver;
 	protected JavascriptExecutor jse;
 	
-	protected BrowserDrivers.ScreenShot screen;
+	protected static BrowserDrivers.ScreenShot screen;
 
 	public void seleniumDriverSetUP() {
 		if ( (driverEXEPath == null || driverEXEPath.equalsIgnoreCase("NULL") || driverEXEPath.equals("") ) 
@@ -166,10 +165,17 @@ public class BrowserDrivers extends Platform {
 					ZIPFile.append("FireFox/");
 							
 					String firefoxFile = null, firefoxPack = null;
+					String[] array53_1 = {"46", "47"};
 					String[] array53 = {"39", "40", "41", "42", "43", "44", "45"};
 					String[] array47 = {"34", "35", "36", "37", "38"};
 					String[] array44 = {"24", "31", "32", "33"};
 					
+					for(String i : array53_1) {
+						if(browserVersion.equals(i)) {
+							firefoxPack = "2.53.1";
+							System.out.println("FF 2.53.1 Pack. FF version b/w [46 ~ 47]");
+						}
+					}
 					for(String i : array53) {
 						if(browserVersion.equals(i)) {
 							firefoxPack = "2.53";
@@ -188,22 +194,27 @@ public class BrowserDrivers extends Platform {
 							System.out.println("FF 2.44 Pack. FF version b/w [24 ~ 33]");
 						}
 					}
-					ZIPFolder = ZIPFile.append( firefoxPack ).toString();
-					firefoxFile = ZIPFolder+"/webdriver.xpi".toString();
-					createDirectory( ZIPFolder );
-					extensionURL.append( firefoxPack +"/webdriver.xpi");
-					File ffFile = new File( firefoxFile );
-					try {
-						if ( !ffFile.exists() ) {
-							System.out.println("Downloading FireFox Extension from server...");
-							new FileFromURL( extensionURL.toString() ).downloadUsing_NIOChannel( firefoxFile );
-						} else {
-							System.out.println("Locally FireFox Extension is available.");
+					if( firefoxPack != null ) {
+						ZIPFolder = ZIPFile.append( firefoxPack ).toString();
+						firefoxFile = ZIPFolder+"/webdriver.xpi".toString();
+						createDirectory( ZIPFolder );
+						extensionURL.append( firefoxPack +"/webdriver.xpi");
+						File ffFile = new File( firefoxFile );
+						try {
+							if ( !ffFile.exists() ) {
+								System.out.println("Downloading FireFox Driver Extension from server...");
+								new FileFromURL( extensionURL.toString() ).downloadUsing_NIOChannel( firefoxFile );
+							} else {
+								System.out.println("Locally FireFox Driver Extension is available.");
+							}
+							driverEXEPath = firefoxFile;
+							isDriverExists = true;
+						} catch (IOException e1) {
+							e1.printStackTrace();
 						}
-						driverEXEPath = firefoxFile;
-						isDriverExists = true;
-					} catch (IOException e1) {
-						e1.printStackTrace();
+					} else {
+						System.err.println("Please select Firefox Browser version above 24.");
+						System.exit(0);
 					}
 					break;
 					

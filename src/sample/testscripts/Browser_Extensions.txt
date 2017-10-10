@@ -1,0 +1,25 @@
+CHROME - crx [  ]
+FireFox - xpi
+
+Wappalyzer - It detects using technologies of an WebApplication.
+	https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg
+	
+Xpath Generator
+	https://chrome.google.com/webstore/detail/xpath-generator/lpfjogcaifigkimnlkepjlkfhpdhebap
+xpathOnClick
+	https://chrome.google.com/webstore/detail/xpathonclick/ikbfbhbdjpjnalaooidkdbgjknhghhbo
+
+Fair AdBlocker
+	https://chrome.google.com/webstore/detail/fair-adblocker/lgblnfidahcdcjddiepkckcfdhpknnjh
+
+Advanced REST client
+	https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo
+
+FireShot takes full web page screenshots. 
+	https://chrome.google.com/webstore/detail/take-webpage-screenshots/mcbpblocgmgfnpjjppndjkmgjaogfceg
+
+
+Selenium IDE
+	crx - https://chrome.google.com/webstore/detail/scirocco-recorder-for-chr/ibclajljffeaafooicpmkcjdnkbaoiih
+	xpi - https://addons.mozilla.org/firefox/downloads/latest/selenium-ide/addon-2079-latest.xpi
+	

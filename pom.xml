@@ -1,36 +1,55 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>SeleniumDriverAutomation</groupId>
-  <artifactId>SeleniumDriverAutomation</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>SeleniumDriverAutomation</groupId>
+	<artifactId>SeleniumDriverAutomation</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	
+	<organization>
+		<url>http://localhost:8080/</url>
+		<name>Selenium Automation</name>
+	</organization>
+	<properties>
+		<seleniumVersion>2.53.0</seleniumVersion>
+		<!-- <seleniumVersion>3.5.1</seleniumVersion> -->
+	</properties>
+
   <dependencies>
-  	<!-- https://mvnrepository.com/artifact/xuggle/xuggle-xuggler -->
+	<!-- https://mvnrepository.com/artifact/xuggle/xuggle-xuggler -->
 	<!-- Changed to « http://www.dcm4che.org/maven2/xuggle/xuggle-xuggler/5.4/ -->
 	<!-- <dependency>
-	    <groupId>xuggle</groupId>
-	    <artifactId>xuggle-xuggler</artifactId>
-	    <version>5.4</version>
+		<groupId>xuggle</groupId>
+		<artifactId>xuggle-xuggler</artifactId>
+		<version>5.4</version>
 	</dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
 		<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-simple</artifactId>
-		    <version>1.6.4</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.4</version>
 		</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server-standalone -->
-	<!-- <dependency>
-	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-server-standalone</artifactId>
-	    <version>2.53.0</version>
-	</dependency> -->
-	
+
 	<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 	<dependency>
-	    <groupId>commons-io</groupId>
-	    <artifactId>commons-io</artifactId>
-	    <version>2.5</version>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.5</version>
 	</dependency>
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>3.4</version>
+	</dependency>
+	
+	<!-- https://maven-repository.com/artifact/org.seleniumhq.selenium/selenium-server/3.5.1 -->
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-server</artifactId>
+		<version>${seleniumVersion}</version>
+	</dependency>
+	<!-- 
+	<systemPath>${basedir}/libs/selenium-server-standalone-2.53.0.jar</systemPath>
+	<scope>system</scope>
+	 -->
 
   </dependencies>
   <build>

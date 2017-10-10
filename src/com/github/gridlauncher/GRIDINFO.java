@@ -39,6 +39,12 @@ public enum GRIDINFO {
 			return JOSNFile.toString();
 		}
 	},
+	NDOEJSON_SELENIUM3 () {
+		@Override public String toString() {
+			File JOSNFile = new File( GRIDINFO.PROJECTPATH.toString()+"/registerNode2.json" );
+			return JOSNFile.toString();
+		}
+	},
 	HUBJSON () {
 		@Override public String toString() {
 			File JOSNFile = new File( GRIDINFO.PROJECTPATH.toString()+"/gridHub.json" );

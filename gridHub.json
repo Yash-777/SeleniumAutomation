@@ -12,5 +12,8 @@
   "timeout": 300000,
   "browserTimeout": 1800000,
   "maxSession": 5,
-  "jettyMaxThreads":-1
+  "jettyMaxThreads":-1,
+  
+  "role": "hub",
+  "debug": false
 }
