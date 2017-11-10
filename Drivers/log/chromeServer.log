@@ -1,0 +1,141 @@
+[0.205][INFO]: COMMAND InitSession {
+   "desiredCapabilities": {
+      "browserName": "chrome",
+      "chromeOptions": {
+         "args": [ "chrome.switches", "--disable-extensions --disable-extensions-file-access-check --disable-extensions-http-throttling", "start-maximized", "test-type", "disable-webgl", "blacklist-accelerated-compositing", "disable-accelerated-2d-canvas", "disable-accelerated-compositing", "disable-accelerated-layers", "disable-accelerated-plugins", "disable-accelerated-video", "disable-accelerated-video-decode", "disable-gpu", "disable-infobars", "blacklist-webgl", "excludeSwitches", "[Ljava.lang.String;@67424e82" ],
+         "binary": "C:\\Users\\yashwanth.m\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe",
+         "extensions": [  ]
+      },
+      "platform": "ANY",
+      "proxy": {
+         "autodetect": false,
+         "class": "org.openqa.selenium.Proxy",
+         "ftpProxy": null,
+         "hCode": 445288316,
+         "httpProxy": "security.mixed_content.block_active_content:false",
+         "noProxy": null,
+         "proxyAutoconfigUrl": null,
+         "proxyType": "MANUAL",
+         "socksPassword": null,
+         "socksProxy": null,
+         "socksUsername": null,
+         "sslProxy": null
+      },
+      "unexpectedAlertBehaviour": "dismiss",
+      "version": ""
+   }
+}
+[0.206][INFO]: Populating Preferences file: {
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "autofill": {
+      "enabled": false
+   },
+   "browser": {
+      "check_default_browser": false
+   },
+   "distribution": {
+      "import_bookmarks": false,
+      "import_history": false,
+      "import_search_engine": false,
+      "make_chrome_default_for_user": false,
+      "show_welcome_page": false,
+      "skip_first_run_ui": true
+   },
+   "dns_prefetching": {
+      "enabled": false
+   },
+   "profile": {
+      "content_settings": {
+         "pattern_pairs": {
+            "https://*,*": {
+               "media-stream": {
+                  "audio": "Default",
+                  "video": "Default"
+               }
+            }
+         }
+      },
+      "default_content_setting_values": {
+         "geolocation": 1
+      },
+      "default_content_settings": {
+         "geolocation": 1,
+         "mouselock": 1,
+         "notifications": 1,
+         "popups": 1,
+         "ppapi-broker": 1
+      },
+      "password_manager_enabled": false
+   },
+   "safebrowsing": {
+      "enabled": false
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "translate": {
+      "enabled": false
+   }
+}
+[0.207][INFO]: Populating Local State file: {
+   "background_mode": {
+      "enabled": false
+   },
+   "ssl": {
+      "rev_checking": {
+         "enabled": false
+      }
+   }
+}
+[0.229][INFO]: Launching chrome: "C:\Users\yashwanth.m\AppData\Local\Google\Chrome\Application\chrome.exe" --[ljava.lang.string;@67424e82 --blacklist-accelerated-compositing --blacklist-webgl --chrome.switches --disable-accelerated-2d-canvas --disable-accelerated-compositing --disable-accelerated-layers --disable-accelerated-plugins --disable-accelerated-video --disable-accelerated-video-decode --disable-background-networking --disable-client-side-phishing-detection --disable-component-update --disable-default-apps --disable-extensions --disable-extensions-file-access-check --disable-extensions-http-throttling --disable-gpu --disable-hang-monitor --disable-infobars --disable-popup-blocking --disable-prompt-on-repost --disable-sync --disable-web-resources --disable-webgl --enable-logging --excludeswitches --ignore-certificate-errors --load-component-extension="C:\Users\YASHWA~1.M\AppData\Local\Temp\scoped_dir15904_2136\internal" --log-level=0 --metrics-recording-only --no-first-run --password-store=basic --proxy-server=http=security.mixed_content.block_active_content:false --remote-debugging-port=12526 --safebrowsing-disable-auto-update --start-maximized --test-type --use-mock-keychain --user-data-dir="C:\Users\YASHWA~1.M\AppData\Local\Temp\scoped_dir15904_26670" data:,
+[1.342][INFO]: resolved localhost to ["::1","127.0.0.1"]
+[2.387][INFO]: RESPONSE InitSession {
+   "acceptSslCerts": true,
+   "applicationCacheEnabled": false,
+   "browserConnectionEnabled": false,
+   "browserName": "chrome",
+   "chrome": {
+      "chromedriverVersion": "2.23.409699 (49b0fa931cda1caad0ae15b7d1b68004acd05129)",
+      "userDataDir": "C:\\Users\\YASHWA~1.M\\AppData\\Local\\Temp\\scoped_dir15904_26670"
+   },
+   "cssSelectorsEnabled": true,
+   "databaseEnabled": false,
+   "handlesAlerts": true,
+   "hasTouchScreen": false,
+   "javascriptEnabled": true,
+   "locationContextEnabled": true,
+   "mobileEmulationEnabled": false,
+   "nativeEvents": true,
+   "networkConnectionEnabled": false,
+   "platform": "Windows NT",
+   "rotatable": false,
+   "takesHeapSnapshot": true,
+   "takesScreenshot": true,
+   "version": "52.0.2743.116",
+   "~~~": "..."
+}
+[2.453][INFO]: COMMAND Navigate {
+   "url": "file:///D:\\Yashwanth\\D Drive\\YashGt\\SeleniumDriverAutomation\\.\\fileUploadBytes.html"
+}
+[2.453][INFO]: Waiting for pending navigations...
+[2.459][INFO]: Done waiting for pending navigations. Status: ok
+[2.672][INFO]: Waiting for pending navigations...
+[2.816][INFO]: Done waiting for pending navigations. Status: ok
+[2.816][INFO]: RESPONSE Navigate
+[2.821][INFO]: COMMAND SetTimeout {
+   "ms": 30000,
+   "type": "implicit"
+}
+[2.821][INFO]: RESPONSE SetTimeout
+[2.826][INFO]: COMMAND FindElement {
+   "using": "xpath",
+   "value": "//div[@style='overflow: auto; height: auto;']"
+}
+[2.826][INFO]: Waiting for pending navigations...
+[2.826][INFO]: Done waiting for pending navigations. Status: ok
+[32.863][INFO]: Waiting for pending navigations...
+[32.864][INFO]: Done waiting for pending navigations. Status: ok
+[32.865][INFO]: RESPONSE FindElement no such element: Unable to locate element: {"method":"xpath","selector":"//div[@style='overflow: auto; height: auto;']"}
+  (Session info: chrome=52.0.2743.116)

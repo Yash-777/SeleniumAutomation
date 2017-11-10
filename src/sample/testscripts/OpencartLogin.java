@@ -48,7 +48,9 @@ public class OpencartLogin {
 			OpencartLogin test = new OpencartLogin();
 
 			URL url = 
-					new URL( String.format("http://%s:4444/wd/hub", GRIDINFO.HOSTIP.toString() ));
+					//new URL( String.format("http://%s:4444/wd/hub", GRIDINFO.HOSTIP.toString() ));
+				new URL( "http://UserID:a31a58f92c423aa2401ef5f5998252fe@127.0.0.1:8080/RemoteHub/wd/hub" );
+				
 			DesiredCapabilities caps_IE = DesiredCapabilities.internetExplorer();
 			caps_IE.setVersion("11");
 			caps_IE.setPlatform(Platform.WINDOWS);
@@ -64,13 +66,12 @@ public class OpencartLogin {
 			
 			DesiredCapabilities caps = DesiredCapabilities.firefox();
 			caps.setCapability("platform","win7");
-			caps.setCapability("version","39");
-			caps.setCapability("secnarioname","Yash_W7_FF39_1");
+			caps.setCapability("version","43");
+			caps.setCapability("secnarioname","FinalTest777");
 			
 			RemoteWebDriver driver = 
 							//new FirefoxDriver();
-							//new RemoteWebDriver(url, caps);
-					new RemoteWebDriver(new URL("http://testuser:f5d4d6a5-dc12-4c96-8563-e7241f9f732a@predev.clictest.com:9091/ClicHub/wd/hub"),caps);
+							new RemoteWebDriver(url, caps);
 			
 			test.loginTest( driver );
 			test.quitDriver();
@@ -139,9 +140,9 @@ public class OpencartLogin {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		WebElement element_node = driver.findElement(By.xpath(xpath));
 		String elementStyle = "arguments[0].style.border='3px solid "+color+"'";
-		if (driver.getClass().getName().contains("ie")) {
+		if (driver.getClass().getName().contains("ie") || driver.getClass().getName().contains("safari")) {
 			jse.executeScript(elementStyle, element_node);
-		}else {
+		} else {
 			try {
 				jse.executeScript(
 				"if (document.evaluate){"
@@ -152,6 +153,14 @@ public class OpencartLogin {
 			} catch (Exception draw) {
 				jse.executeScript(elementStyle, element_node);
 			}
+		}
+	}
+	
+	public void sleepThread(long millis) {
+		try {
+			Thread.sleep( millis );
+		} catch (InterruptedException e) {
+			System.out.println("Sleep Exception:"+ e.getMessage());
 		}
 	}
 }

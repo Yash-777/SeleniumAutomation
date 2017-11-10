@@ -23,9 +23,6 @@ public class ScreenShot extends Javascript_Actions {
 	
 	public LocalBrowser browserName;
 	
-	public ScreenShot() {
-		// TODO Auto-generated constructor stub
-	}
 	/**
 	 * Captures screen as a file.
 	 * 

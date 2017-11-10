@@ -157,4 +157,39 @@ public class Javascript_Actions {
 		jse.executeScript( send.toString() );
 	}
 
+	/**
+	 *
+	 * JQuery
+		var locator = "//*[@name='sectionCode']"
+		var path = locator+'/@readonly';
+		var ele = $x( locator );
+		var attr = $x( path ).length;
+		console.log( attr );
+		if( attr == 1 ) {
+		  console.log( "Exception: invalid element state: Element must be user-editable in order to clear it." );
+		}
+	
+	 * Javascript
+		var ele = document.evaluate(locator, window.document, null, 9, null ).singleNodeValue;
+		console.log( ele );
+		
+		var count = document.evaluate('count('+path+')', window.document, null, 0, null);
+		console.log(count.numberValue);
+	 * @param locator
+	 * @return
+	 */
+	public boolean isElementEditable( String locator ) {
+		StringBuffer send = new StringBuffer();
+		send.append("var path = "+locator+"/@readonly';");
+		send.append("var elem = document.evaluate('count('path')', window.document, null, 0, null);");
+		send.append("return elem.numberValue");
+		
+		Integer count = (Integer) jse.executeScript( send.toString() );
+		if( count == 1 ) {
+			// Element is Editable.
+			return true;
+		}
+		// To avoid - Exception: invalid element state: Element must be user-editable in order to clear it.
+		return false;
+	}
 }

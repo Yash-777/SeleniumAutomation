@@ -35,6 +35,12 @@ public final class Browser extends BrowserDrivers {
 	
 	static Properties props = new Properties();
 	
+	/**
+	 * org.openqa.selenium.WebDriverException: waiting for doc.body failed
+	 * driver.get("about:config");
+	 */
+	public boolean useWaitTimes = true;
+	
 	protected DesiredCapabilities capabilities;
 	public Capabilities responseCaps;
 	
@@ -131,7 +137,6 @@ public final class Browser extends BrowserDrivers {
 			capabilities = new DesiredCapabilities();
 			capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
 										UnexpectedAlertBehaviour.DISMISS);
-			
 			File file = new File( binaryPath );
 			FirefoxBinary binary = new FirefoxBinary(file);
 			
@@ -181,9 +186,12 @@ public final class Browser extends BrowserDrivers {
 
 			driver = new FirefoxDriver(binary, profile, capabilities);
 			
-			new FluentWait<WebDriver>(driver)
-						.withTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
-						.pollingEvery(5, java.util.concurrent.TimeUnit.SECONDS);
+			if( useWaitTimes ) {
+				
+				new FluentWait<WebDriver>(driver)
+					.withTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+					.pollingEvery(5, java.util.concurrent.TimeUnit.SECONDS);
+			}
 			
 			break;
 		case CHROME:
@@ -200,6 +208,8 @@ public final class Browser extends BrowserDrivers {
 			// https://sites.google.com/a/chromium.org/chromedriver/capabilities
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary( binaryPath );
+			//capabilities.setCapability("chrome.args",
+			//Arrays.asList("--disable-web-security", "--allow-running-insecure-content", "--start-maximized"));
 			
 			if( useExtensions ) {
 				options.addExtensions( new File( browserExtension ) );
@@ -218,7 +228,7 @@ public final class Browser extends BrowserDrivers {
 			if( privatebrowsing ) { // Browser in Private Mode.
 				options.addArguments("chrome.switches", "--incognito --non-secure-while-incognito");
 			}
-				
+			
 			// https://peter.sh/experiments/chromium-command-line-switches/
 			String[] arguments = {"start-maximized","test-type","disable-webgl","blacklist-accelerated-compositing",
 					"disable-accelerated-2d-canvas","disable-accelerated-compositing","disable-accelerated-layers",

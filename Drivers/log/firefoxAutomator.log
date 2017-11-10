@@ -1,0 +1,84 @@
+1509537171282	addons.manager	DEBUG	Application has been upgraded
+1509537171291	addons.manager	DEBUG	Loaded provider scope for resource://gre/modules/addons/XPIProvider.jsm: ["XPIProvider"]
+1509537171292	addons.manager	DEBUG	Loaded provider scope for resource://gre/modules/LightweightThemeManager.jsm: ["LightweightThemeManager"]
+1509537171294	addons.manager	DEBUG	Loaded provider scope for resource://gre/modules/addons/GMPProvider.jsm
+1509537171295	addons.manager	DEBUG	Loaded provider scope for resource://gre/modules/addons/PluginProvider.jsm
+1509537171295	addons.manager	DEBUG	Starting provider: XPIProvider
+1509537171295	addons.xpi	DEBUG	startup
+1509537171296	addons.xpi	INFO	Mapping fxdriver@googlecode.com to C:\Users\YASHWA~1.M\AppData\Local\Temp\anonymous6421511549711283304webdriver-profile\extensions\fxdriver@googlecode.com
+1509537171296	addons.xpi	INFO	SystemAddonInstallLocation directory is missing
+1509537171297	addons.xpi	INFO	Mapping {972ce4c6-7e08-4474-a285-3208198ce6fd} to D:\BrowsersCustomInstalation\FF_43\browser\extensions\{972ce4c6-7e08-4474-a285-3208198ce6fd}
+1509537171298	addons.xpi	DEBUG	Skipping unavailable install location app-system-share
+1509537171298	addons.xpi	DEBUG	Skipping unavailable install location app-system-local
+1509537171298	addons.xpi	DEBUG	checkForChanges
+1509537171298	addons.xpi	DEBUG	Loaded add-on state from prefs: {}
+1509537171299	addons.xpi	DEBUG	New add-on fxdriver@googlecode.com in app-profile
+1509537171299	addons.xpi	DEBUG	getModTime: Recursive scan of fxdriver@googlecode.com
+1509537171303	addons.xpi	DEBUG	New add-on {972ce4c6-7e08-4474-a285-3208198ce6fd} in app-global
+1509537171303	addons.xpi	DEBUG	getModTime: Recursive scan of {972ce4c6-7e08-4474-a285-3208198ce6fd}
+1509537171304	addons.xpi	DEBUG	getInstallState changed: true, state: {"app-profile":{"fxdriver@googlecode.com":{"d":"C:\\Users\\YASHWA~1.M\\AppData\\Local\\Temp\\anonymous6421511549711283304webdriver-profile\\extensions\\fxdriver@googlecode.com","st":1509537170639,"mt":1509537170639}},"app-global":{"{972ce4c6-7e08-4474-a285-3208198ce6fd}":{"d":"D:\\BrowsersCustomInstalation\\FF_43\\browser\\extensions\\{972ce4c6-7e08-4474-a285-3208198ce6fd}","st":1503926125991,"mt":1450322130000}}}
+1509537171310	addons.xpi-utils	DEBUG	Opening XPI database C:\Users\YASHWA~1.M\AppData\Local\Temp\anonymous6421511549711283304webdriver-profile\extensions.json
+1509537171312	addons.xpi-utils	DEBUG	New add-on fxdriver@googlecode.com installed in app-profile
+*** Blocklist::_loadBlocklistFromFile: blocklist is disabled
+1509537171415	DeferredSave.extensions.json	DEBUG	Save changes
+1509537171416	addons.xpi-utils	DEBUG	New add-on {972ce4c6-7e08-4474-a285-3208198ce6fd} installed in app-global
+1509537171418	DeferredSave.extensions.json	DEBUG	Starting timer
+1509537171419	DeferredSave.extensions.json	DEBUG	Save changes
+1509537171419	addons.xpi-utils	INFO	Hiding the updated system add-ons.
+1509537171419	addons.manager	DEBUG	Registering startup change 'installed' for fxdriver@googlecode.com
+1509537171419	addons.xpi-utils	DEBUG	Make addon app-profile:fxdriver@googlecode.com visible
+1509537171419	DeferredSave.extensions.json	DEBUG	Save changes
+1509537171419	addons.xpi-utils	DEBUG	Make addon app-global:{972ce4c6-7e08-4474-a285-3208198ce6fd} visible
+1509537171419	DeferredSave.extensions.json	DEBUG	Save changes
+1509537171420	addons.xpi	DEBUG	Updating XPIState for {"id":"fxdriver@googlecode.com","syncGUID":"d6gkzc0VoVqL","location":"app-profile","version":"2.53.1","type":"extension","internalName":null,"updateURL":null,"updateKey":null,"optionsURL":null,"optionsType":null,"aboutURL":null,"iconURL":null,"icon64URL":null,"defaultLocale":{"name":"Firefox WebDriver","description":"WebDriver implementation for Firefox","creator":"Simon Stewart","homepageURL":null},"visible":true,"active":true,"userDisabled":false,"appDisabled":false,"descriptor":"C:\\Users\\YASHWA~1.M\\AppData\\Local\\Temp\\anonymous6421511549711283304webdriver-profile\\extensions\\fxdriver@googlecode.com","installDate":1509537170639,"updateDate":1509537170639,"applyBackgroundUpdates":1,"bootstrap":false,"size":3249525,"sourceURI":null,"releaseNotesURI":null,"softDisabled":false,"foreignInstall":true,"hasBinaryComponents":true,"strictCompatibility":false,"locales":[],"targetApplications":[{"id":"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}","minVersion":"3.0","maxVersion":"48.0"}],"targetPlatforms":[{"os":"Darwin","abi":null},{"os":"SunOS","abi":null},{"os":"FreeBSD","abi":null},{"os":"OpenBSD","abi":null},{"os":"WINNT","abi":null},{"os":"Linux","abi":null}],"multiprocessCompatible":false,"signedState":0}
+1509537171420	addons.xpi	DEBUG	getModTime: Recursive scan of fxdriver@googlecode.com
+1509537171423	addons.xpi	DEBUG	Updating XPIState for {"id":"{972ce4c6-7e08-4474-a285-3208198ce6fd}","syncGUID":"GqeouV7LsHO_","location":"app-global","version":"43.0.1","type":"theme","internalName":"classic/1.0","updateURL":null,"updateKey":null,"optionsURL":null,"optionsType":null,"aboutURL":null,"iconURL":null,"icon64URL":null,"defaultLocale":{"name":"Default","description":"The default theme.","creator":"Mozilla","homepageURL":null,"contributors":["Mozilla Contributors"]},"visible":true,"active":true,"userDisabled":false,"appDisabled":false,"descriptor":"D:\\BrowsersCustomInstalation\\FF_43\\browser\\extensions\\{972ce4c6-7e08-4474-a285-3208198ce6fd}","installDate":1503926125991,"updateDate":1503926125991,"applyBackgroundUpdates":1,"skinnable":true,"size":24172,"sourceURI":null,"releaseNotesURI":null,"softDisabled":false,"foreignInstall":false,"hasBinaryComponents":false,"strictCompatibility":true,"locales":[],"targetApplications":[{"id":"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}","minVersion":"43.0.1","maxVersion":"43.0.1"}],"targetPlatforms":[]}
+1509537171424	addons.xpi	DEBUG	getModTime: Recursive scan of {972ce4c6-7e08-4474-a285-3208198ce6fd}
+1509537171424	DeferredSave.extensions.json	DEBUG	Save changes
+1509537171424	addons.xpi	DEBUG	Updating database with changes to installed add-ons
+1509537171424	addons.xpi-utils	DEBUG	Updating add-on states
+1509537171425	addons.xpi-utils	DEBUG	Writing add-ons list
+1509537171432	addons.manager	DEBUG	Registering shutdown blocker for XPIProvider
+1509537171433	addons.manager	DEBUG	Provider finished startup: XPIProvider
+1509537171433	addons.manager	DEBUG	Starting provider: LightweightThemeManager
+1509537171433	addons.manager	DEBUG	Registering shutdown blocker for LightweightThemeManager
+1509537171433	addons.manager	DEBUG	Provider finished startup: LightweightThemeManager
+1509537171433	addons.manager	DEBUG	Starting provider: GMPProvider
+1509537171441	addons.manager	DEBUG	Registering shutdown blocker for GMPProvider
+1509537171441	addons.manager	DEBUG	Provider finished startup: GMPProvider
+1509537171441	addons.manager	DEBUG	Starting provider: PluginProvider
+1509537171441	addons.manager	DEBUG	Registering shutdown blocker for PluginProvider
+1509537171441	addons.manager	DEBUG	Provider finished startup: PluginProvider
+1509537171441	addons.manager	DEBUG	Completed startup sequence
+1509537172068	addons.manager	DEBUG	Starting provider: <unnamed-provider>
+1509537172068	addons.manager	DEBUG	Registering shutdown blocker for <unnamed-provider>
+1509537172068	addons.manager	DEBUG	Provider finished startup: <unnamed-provider>
+1509537172321	DeferredSave.extensions.json	DEBUG	Starting write
+1509537172628	addons.repository	DEBUG	No addons.json found.
+1509537172629	DeferredSave.addons.json	DEBUG	Save changes
+1509537172631	DeferredSave.addons.json	DEBUG	Starting timer
+1509537172638	addons.manager	DEBUG	Starting provider: PreviousExperimentProvider
+1509537172638	addons.manager	DEBUG	Registering shutdown blocker for PreviousExperimentProvider
+1509537172638	addons.manager	DEBUG	Provider finished startup: PreviousExperimentProvider
+1509537172670	DeferredSave.extensions.json	DEBUG	Write succeeded
+1509537172671	addons.xpi-utils	DEBUG	XPI Database saved, setting schema version preference to 17
+1509537172683	DeferredSave.addons.json	DEBUG	Starting write
+1509537172695	DeferredSave.addons.json	DEBUG	Write succeeded
+JavaScript warning: https://a.trellocdn.com/js/91cfe067015bf98326217f49e6db3ed4/ltp.js, line 10: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript error: https://trello.com/power-ups/power-up.min.js, line 1: Error: No active member in context.
+JavaScript error: https://trello.com/power-ups/power-up.min.js, line 1: Error: No active member in context.
+JavaScript warning: https://securepubads.g.doubleclick.net/gpt/pubads_impl_163.js, line 1: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://tpc.googlesyndication.com/pagead/js/r20171025/r20110914/activeview/osd_listener.js, line 1: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://tpc.googlesyndication.com/pagead/js/r20171025/r20110914/activeview/osd_listener.js, line 1: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://www.googletagservices.com/dcm/impl_v41.js, line 13: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://pagead2.googlesyndication.com/pagead/js/lidar.js, line 2: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://securepubads.g.doubleclick.net/gpt/pubads_impl_163.js, line 1: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://tpc.googlesyndication.com/pagead/js/r20171025/r20110914/activeview/osd_listener.js, line 1: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://tpc.googlesyndication.com/pagead/js/r20171025/r20110914/activeview/osd_listener.js, line 1: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://www.googletagservices.com/dcm/impl_v41.js, line 13: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://pagead2.googlesyndication.com/pagead/js/lidar.js, line 2: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://securepubads.g.doubleclick.net/gpt/pubads_impl_163.js, line 1: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://tpc.googlesyndication.com/pagead/js/r20171025/r20110914/activeview/osd_listener.js, line 1: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://tpc.googlesyndication.com/pagead/js/r20171025/r20110914/activeview/osd_listener.js, line 1: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://www.googletagservices.com/dcm/impl_v41.js, line 13: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
+JavaScript warning: https://pagead2.googlesyndication.com/pagead/js/lidar.js, line 2: mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create

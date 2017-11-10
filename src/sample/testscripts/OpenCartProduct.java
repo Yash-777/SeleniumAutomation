@@ -25,8 +25,8 @@ public class OpenCartProduct {
 			"Checkbox", "//div[2]/div[1]/div[2]/label[1]",
 			"Text", "//div[3]/input[1]",
 			// //*[@id="input-option217"] « "//select[1]" //*[@id="input-option217"]/option[2] « //select[1]/option[2]
-			"Select", "//*[@id=\"input-option217\"]",
-			"Select_Option", "//*[@id=\"input-option217\"]/option[2]",
+			"Select", "//*[@id='input-option217']",
+			"Select_Option", "//*[@id='input-option217']/option[2]",
 			"Textarea", "//div[5]/textarea[1]",
 			"File_Upload", "//div[6]/button[1]/i[1]",
 

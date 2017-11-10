@@ -187,6 +187,21 @@ public class PageActions extends Verifications {
 		}
 		return null;
 	}
+	
+	/**
+	 * ComboBox in HTML 5
+	 * HTML 4 equivalent Select followed by options.
+	 * 
+	 * Element send keys to search combo box item, after sort it get filtered and displayed down 
+	 * using element XPATH click on it.
+	 * @return
+	 */
+	public boolean ComboBox() {
+		
+		return false;
+	}
+	
+	
 	String SELECT_ELE = null;
 	public enum Options {
 		VISIBLE_TEXT, VALUE, INDEX;
@@ -216,13 +231,6 @@ public class PageActions extends Verifications {
 			returnVal = clickOnElement( SELECT_ELE, locatorType );
 		}
 		return returnVal;
-	}
-	static boolean pathContainsSubPath(String xpath) {
-		Pattern p = Pattern.compile("./select.*/option.*");
-		Matcher m = p.matcher( xpath );
-		boolean matches = m.matches();
-		System.out.println("Match case >> "+matches);
-		return matches;
 	}
 	/**
 	 * <ul>Sample Xpaths:
@@ -283,6 +291,13 @@ public class PageActions extends Verifications {
 			takeElementScreenshot( selectElement );
 		}
 		return returnVal;
+	}
+	static boolean pathContainsSubPath(String xpath) {
+		Pattern p = Pattern.compile("./select.*/option.*");
+		Matcher m = p.matcher( xpath );
+		boolean matches = m.matches();
+		System.out.println("Match case >> "+matches);
+		return matches;
 	}
 	
 	public void quitDriver() {
