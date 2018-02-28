@@ -1,6 +1,6 @@
 /bin/
 /lib/*.jar
-/Drivers/
+/Drivers/*
 /images/*.*
 .settings/*
 .classpath
