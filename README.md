@@ -1,6 +1,6 @@
 # SeleniumDriverAutomation
 
-Selenium IDE:
+_Selenium IDE_:
 Selenium IDE is an integrated development environment for Selenium tests. It is implemented as a Firefox extension,
 and allows you to record, edit, and debug tests. Selenium IDE includes the entire Selenium Core, allowing you to
 easily and quickly record and play back tests in the actual environment that they will run.
@@ -13,7 +13,7 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
 System.setProperty(FirefoxDriver.SystemProperty.DRIVER_XPI_PROPERTY, "D:\\Software\\CBCP\\webdriver.xpi");
 
 // Selenium 3
-System.out.println("FireFox Driver Path « "+ geckodriverCloudRootPath);
+System.out.println("FireFox Driver Path Â« "+ geckodriverCloudRootPath);
 File temp = File.createTempFile("geckodriver",	null);
 chromtmp.setExecutable(true);
 FileUtils.copyURLToFile(new URL( geckodriverCloudRootPath ), temp);
