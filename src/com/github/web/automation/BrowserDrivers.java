@@ -241,7 +241,7 @@ public class BrowserDrivers extends Platform {
 		}
 	}
 	
-	public void createDirectory( String folderName ) {
+	public static void createDirectory( String folderName ) {
 		File folder = new File( folderName );
 		if ( !folder.exists()) {
 			try {

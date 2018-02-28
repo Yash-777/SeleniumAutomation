@@ -1,0 +1,61 @@
+https://stackoverflow.com/error?aspxerrorpath=/questions/38451622/appium-parallel-execution-with-different-servers
+https://cdn.sstatic.net/Sites/stackoverflow/Img/error.svg
+Oops! Something Bad Happened!
+We apologize for any inconvenience, but an unexpected error occurred while you were browsing our site.
+
+It’s not you, it’s us. This is our fault.
+
+Detailed information about this error has automatically been recorded and we have been notified.
+
+Yes, we do look at every error. We even try to fix some of them.
+
+It’s not strictly necessary, but if you’d like to give us additional information about this error, do so at our feedback site, https://meta.stackoverflow.com.
+
+=============
+
+Internet Explorer on Windows Server {2003,8,12}
+	Content from the website listed below is being blocked by the IE Enhanced Security Configuration
+	https://pivps.com/disable-internet-explorer-enhanced-security-configuration-ie-esc-windows-server/
+	https://4sysops.com/archives/four-ways-to-disable-internet-explorer-enhanced-security-configuration-ie-esc/
+===== ----- =====
+driver.get("about:config");
+jse.executeScript("document.getElementById('showWarningNextTime').checked=false;");
+jse.executeScript("document.getElementById('warningButton').click();");
+jse.executeScript("var ele = document.getElementById('textbox');"+
+					"ele.value = 'javascript'; ele.click();");
+							
+org.openqa.selenium.WebDriverException: waiting for doc.body failed
+	https://github.com/seleniumhq/selenium-google-code-issue-archive/issues/1157
+
+	I think it happens when trying to execute JavaScript on page which is only partly loaded 
+	(specifically "body" tag is still missing). Selenium detect cases where JavaScript call is 
+	made on invalidated URL.
+===== ----- =====
+org.openqa.selenium.WebDriverException: waiting for doc.body failed
+	driver.get("about:config");
+	
+===== ----- =====
+
+SEVERE: The web application [/MYServletDBApp] registered the JDBC driver [com.mysql.jdbc.Driver] 
+but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver
+has been forcibly unregistered. org.apache.catalina.loader.WebappClassLoader checkThreadLocalMapForLeaks
+
+DataBase is in Stop state, Start it.
+===== ----- =====
+Driver info: chromedriver=2.33.506120
+WebDriver Exception « 
+Exception in thread "main" org.openqa.selenium.WebDriverException: session not created exception: Chrome version must be >= 60.0.3112.0
+
+===== ----- =====
+WebDriverException: unknown error: Chrome failed to start: crashed
+
+Provide Correct Binary path
+	C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe
+Selenuim is checking in Users folder.
+	C:\Users\yashwanth.m\AppData\Local\Google\Chrome\Application\chrome.exe
+
+WebDriverException: unknown error: chrome failed to start
+	http://techdows.com/2009/01/deleting-your-google-chrome-profile.html
+===== ----- =====
+
+org.openqa.selenium.TimeoutException: asynchronous script timeout: result was not received in 30 seconds

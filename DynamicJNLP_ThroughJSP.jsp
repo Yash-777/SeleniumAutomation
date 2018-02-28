@@ -23,6 +23,7 @@ String args3 = request.getParameter("version");
 
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
+Java Network Launching Protocol
 Configure the Web server to use the Java Web Start MIME type. application/x-java-jnlp-file JNLP
 
 http://IP:PORT/ApplicationName/DynamicJNLP_ThroughJSP.jsp?testApp=https://github.com/Yash-777&platform=windows&browser=chrome&version=53.0&java=6
@@ -61,10 +62,10 @@ jnlp href - all values must be provided here and their should be no spacess in b
 	
 	<update check="background" policy="always"/>
 	
-	<!-- Selects the initial and maximum memory sizes available to the JVM, respectively. 
-		These values are used for the JVM heap. Specifies the amount of memory, in Megabytes,
-		that will be dedicated to running the server.
-		https://docs.oracle.com/cd/E22289_01/html/821-1274/configuring-the-default-jvm-and-java-arguments.html
+	<!--
+	Selects the initial and maximum memory sizes available to the JVM, respectively. 
+	These values are used for the JVM heap. Specifies the amount of memory, in Megabytes, that will be dedicated to running the server.
+	https://docs.oracle.com/cd/E22289_01/html/821-1274/configuring-the-default-jvm-and-java-arguments.html
 	-->
 	<resources>
 		<j2se version="1.6+" 

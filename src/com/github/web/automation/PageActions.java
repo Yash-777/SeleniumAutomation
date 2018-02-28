@@ -9,6 +9,7 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -57,10 +58,27 @@ public class PageActions extends Verifications {
 		explicitWait = new WebDriverWait(driver, ELEMENT_WAIT_TIME_SEC);
 		
 		fluentWait = new FluentWait<WebDriver>(driver)
-				.withTimeout(30, TimeUnit.SECONDS)
 				.pollingEvery(5, TimeUnit.SECONDS)
-				.ignoring( NoSuchElementException.class ); // We need to ignore this exception.
+				.withTimeout(30, TimeUnit.SECONDS)
+				.ignoring( NoSuchElementException.class ) // We need to ignore this exception.
+				.ignoring(TimeoutException.class);
 				//.ignoring( StaleElementReferenceException.class );
+		
+		/* // com.google.common.base.Predicate
+		Predicate<WebDriver> predicate  = new Predicate <WebDriver>() {
+			public boolean apply(WebDriver arg0) {
+				WebElement element = arg0.findElement(By.xpath(locator));
+				if( element != null ) {
+					return true;
+				}
+				return false;
+			}
+		};
+		fluentWait.until(predicate);
+		
+		WebElement visible = explicitWait.until(ExpectedConditions.visibilityOfElementLocated( By.xpath( locator )));
+					
+		*/
 	}
 	
 	/**

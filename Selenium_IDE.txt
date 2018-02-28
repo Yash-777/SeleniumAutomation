@@ -3,6 +3,11 @@ It is a Firefox plugin which helps testers to recorded their actions and then ex
 them as a reusable script in one of many programming languages.
 Selenium IDE has a recording feature, that provides an easy-to-use interface for developing automated tests.
 
+https://github.com/SeleniumHQ/selenium/tree/master/ide
+https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd
+https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd/related?hl=en
+https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid
+
 * Programming language experience is not required for Selenium IDE
 
 « https://ranorex.io/
@@ -13,11 +18,16 @@ and it’s easy to make mistakes by avoiding steps.
 
 
 Chrome Extension Download ( .crx) - http://crxextractor.com/
-
-
+	https://chrome.google.com/webstore/detail/scirocco-recorder-for-chr/ibclajljffeaafooicpmkcjdnkbaoiih?hl=en
+	
 SELENIUM IDE -  XPI
 	https://addons.mozilla.org/firefox/downloads/latest/sele-scx/addon-719653-latest.xpi
 pref("extensions.selenium-ide.idex.iw_timeout",15000);
 pref("extensions.selenium-ide.idex.iw_commands",'click,clickAt,mouseDown,mouseDownAt,mouseMove,mouseMoveAt,mouseOver');
 
 https://bitbucket.org/account/signin/
+
+// https://stackoverflow.com/a/10954954/5081877
+var elem = $("#SingleDiv_iLifeTerm");
+var offset = elem.offset().left - elem.parent().offset().left;
+console.dir( offset );

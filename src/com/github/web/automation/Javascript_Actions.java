@@ -61,10 +61,10 @@ public class Javascript_Actions {
 	 * And it will wait until document get loaded completely.
 	 * 
 	 * <OL> <P><B>loading states are:</B>
-	 * <LI> <B>loading</B> Â« The document is still loading.
-	 * <LI> <B>interactive</B> Â« The document has finished loading and the document has been 
+	 * <LI> <B>loading</B> « The document is still loading.
+	 * <LI> <B>interactive</B> « The document has finished loading and the document has been 
 	 * parsed but sub-resources such as images, style-sheets and frames are still loading.
-	 * <LI> <B>complete</B> Â« The document and all sub-resources have finished loading. 
+	 * <LI> <B>complete</B> « The document and all sub-resources have finished loading. 
 	 * The state indicates that the load event is about to fire.</br>
 	 * </OL>
 	 * @param jse the Java Script executor object which has reference to current window.

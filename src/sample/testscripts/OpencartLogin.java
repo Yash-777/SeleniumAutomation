@@ -14,8 +14,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.github.gridlauncher.GRIDINFO;
-
 /**
  * https://demo.opencart.com/index.php?route=product/product&path=25_28&product_id=42
  * 
@@ -162,5 +160,35 @@ public class OpencartLogin {
 		} catch (InterruptedException e) {
 			System.out.println("Sleep Exception:"+ e.getMessage());
 		}
+	}
+	/**
+	 * This method is to check the loading state of the document.
+	 * And it will wait until document get loaded completely.
+	 * 
+	 * <OL> <P><B>loading states are:</B>
+	 * <LI> <B>loading</B> « The document is still loading.
+	 * <LI> <B>interactive</B> « The document has finished loading and the document has been 
+	 * parsed but sub-resources such as images, style-sheets and frames are still loading.
+	 * <LI> <B>complete</B> « The document and all sub-resources have finished loading. 
+	 * The state indicates that the load event is about to fire.</br>
+	 * </OL>
+	 * @param jse the Java Script executor object which has reference to current window.
+	 * @return return the state as `complete`.
+	 * 
+	 * @see <a href="https://developer.mozilla.org/en/docs/Web/API/Document/readyState">Document.readyState</a>
+	 */
+	public synchronized String checkDocumentLoaded( JavascriptExecutor jse ) {
+		try {
+			wait(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		String loadingStatus = (String) jse.executeScript("return window.document.readyState");
+		System.out.println("status2 >> " + loadingStatus);
+		if (loadingStatus.equalsIgnoreCase("complete"))
+			return loadingStatus;
+		else
+			checkDocumentLoaded(jse);
+		return loadingStatus;
 	}
 }

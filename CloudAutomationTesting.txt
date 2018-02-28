@@ -1,5 +1,15 @@
-
+https://www.ranorex.com/free-trial.html
 https://github.com/saucelabs-sample-test-frameworks
 
 https://endtest.io/
 https://loadfocus.com/blog/2013/09/05/how-to-locate-web-elements-with-selenium-webdriver/
+
+Custom DropDowns:
+	https://www.utest.com/sign-up
+	https://codility.com/trial/
+
+File Upload Attach Document:
+	https://www.testing-whiz.com/download
+	
+Sliders
+	http://rangeslider.js.org/
