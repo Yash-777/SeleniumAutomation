@@ -23,7 +23,7 @@ import com.github.server.file.GeckoDriver;
 public class Selenium_3 {
 	public static void main(String[] args) throws IOException {
 		String browserName = "firefox", firefoxVersion = "56", FF_DriverPack = "v0.19.1",
-				driverURLFormTomcatRoot = "http://testingapp3.clictest.com:8080/";
+				driverURLFormTomcatRoot = "http://Yash.local.com:8080/";
 		
 		FirefoxProfile profile = new FirefoxProfile(); // about:support - Troubleshooting Information
 		DesiredCapabilities capabilities = new DesiredCapabilities();
