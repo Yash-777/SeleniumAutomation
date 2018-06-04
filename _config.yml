@@ -6,4 +6,4 @@ encoding: UTF-8
 title: DriverAutomation
 description: Automate Browser Drivers to lib folder
 show_downloads: false
-theme: jekyll-theme-merlot
+theme: jekyll-theme-cayman
