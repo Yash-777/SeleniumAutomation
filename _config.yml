@@ -1,9 +1,0 @@
-# https://help.github.com/articles/page-build-failed-file-is-not-properly-utf-8-encoded/
-encoding: UTF-8
-
-# File: _config.yml
-
-title: DriverAutomation
-description: Automate Browser Drivers to lib folder
-show_downloads: false
-theme: jekyll-theme-cayman

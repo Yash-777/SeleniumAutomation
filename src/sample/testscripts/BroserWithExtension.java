@@ -45,15 +45,15 @@ public class BroserWithExtension {
 	}
 	public static void main(String[] args) {
 		try {
-			Browser b = new Browser( LocalBrowser.FIREFOX );
+			Browser b = new Browser( LocalBrowser.IEXPLORE );
 			b.useWaitTimes = false;
 			
 			RemoteWebDriver webDriver = b.getWebDriver();
 			driver = webDriver;
 			
 			BroserWithExtension obj = new BroserWithExtension( b );
-			//obj.test();
-			obj.firefoxScreenshot();
+			obj.test();
+			//obj.firefoxScreenshot();
 			
 			System.out.println("Enter something in console to quit the browser and driver.");
 			try {
@@ -131,6 +131,7 @@ public class BroserWithExtension {
 	public void test() {
 		/*OpencartLogin test = new OpencartLogin();
 		test.loginTest( driver );*/
+		driver.get("https://cldilpfapp02.cloudapp.net/Configurator/CnfgtrMenu/ICICI/Webmenu.aspx");
 		
 		String version = browser.responseCaps.getVersion();
 		Object json = browser.responseCaps.getCapability( browser.responseCaps.getBrowserName() );

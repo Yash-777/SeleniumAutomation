@@ -29,15 +29,17 @@ public class OpenCartProduct {
 			"Select_Option", "//*[@id='input-option217']/option[2]",
 			"Textarea", "//div[5]/textarea[1]",
 			"File_Upload", "//div[6]/button[1]/i[1]",
-
+			
 			"Date_Calender", "//div[7]/div[1]/span[1]/button[1]/i[1]",
 			"Date_Calender_Selection", "//div[4]/div[1]/div[1]/table[1]/tbody[1]/tr[4]/td[6]",
-
+			
 			"Time", "//div[8]/div[1]/input[1]",
 			"Date & Time", "//div[9]/div[1]/input[1]",
 			"Qty", "//div[10]/input[1]",
-
-			"Toggle_Tooltip", "//div[2]/div[1]/button[1]/i[1]"
+			
+			"Button Cart", "//button[@id='button-cart']"
+			
+			//"Toggle_Tooltip", "//div[2]/div[1]/button[1]/i[1]",
 	};
 	
 	static RemoteWebDriver driver;
@@ -115,7 +117,10 @@ public class OpenCartProduct {
 		boolean Qty = page.sendText( xpaths[29], ByType.XPATH_EXPRESSION, "1" );
 		System.out.println("Date & Time Text Sent : "+ Qty);
 		
-		/*boolean Toggle_Tooltip = page.verifyToolTipText( xpaths[31], ByType.XPATH_EXPRESSION, "data-original-title", "Add to Wish List");
+		boolean rightClick = page.rightClick( xpaths[31], ByType.XPATH_EXPRESSION );
+		System.out.println("Button Cart : "+ rightClick);
+		
+		/*boolean Toggle_Tooltip = page.verifyToolTipText( xpaths[33], ByType.XPATH_EXPRESSION, "data-original-title", "Add to Wish List");
 		System.out.println("Toggle_Tooltip Text Sent : "+Toggle_Tooltip);*/
 		
 		System.out.println("Enter something in console to quit the browser and driver.");

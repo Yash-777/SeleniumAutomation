@@ -1,6 +1,8 @@
 https://www.ranorex.com/free-trial.html
 https://github.com/saucelabs-sample-test-frameworks
 
+https://www.browserstack.com/automate/capabilities
+
 https://endtest.io/
 https://loadfocus.com/blog/2013/09/05/how-to-locate-web-elements-with-selenium-webdriver/
 

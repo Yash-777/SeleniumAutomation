@@ -3,6 +3,9 @@ https://cdn.sstatic.net/Sites/stackoverflow/Img/error.svg
 Oops! Something Bad Happened!
 We apologize for any inconvenience, but an unexpected error occurred while you were browsing our site.
 
+
+FIREFOX 55 Issue « https://github.com/mozilla/geckodriver/issues/617
+
 It’s not you, it’s us. This is our fault.
 
 Detailed information about this error has automatically been recorded and we have been notified.

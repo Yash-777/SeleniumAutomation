@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -188,6 +189,21 @@ public class Keyboard_Mouse_Actions extends ScreenShot {
 			Action action6 = moveSlider.dragAndDropBy(sliderElement, xOffset, yOffset).build();
 
 			action6.perform();
+			return true;
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean rightClick( String locator, ByType locatorType ) {
+		try {
+			System.out.println("Right Click Element path : "+ locator);
+			By findBy = findBy(locator, locatorType);
+			WebElement element = explicitWait.until(ExpectedConditions.elementToBeClickable( findBy ));
+			Actions rightClick = new Actions(driver);
+			rightClick.moveToElement( element );
+			rightClick.contextClick( element ).build().perform();
 			return true;
 		} catch ( Exception e ) {
 			e.printStackTrace();

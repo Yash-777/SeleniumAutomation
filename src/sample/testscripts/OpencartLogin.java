@@ -46,8 +46,8 @@ public class OpencartLogin {
 			OpencartLogin test = new OpencartLogin();
 
 			URL url = 
-					//new URL( String.format("http://%s:4444/wd/hub", GRIDINFO.HOSTIP.toString() ));
-				new URL( "http://UserID:a31a58f92c423aa2401ef5f5998252fe@127.0.0.1:8080/RemoteHub/wd/hub" );
+				//new URL( String.format("http://%s:4444/wd/hub", GRIDINFO.HOSTIP.toString() ));
+				new URL( "http://Rajukasarapu:a31a58f92c423aa2401ef5f5998252fe@172.16.21.109:8080/ClicHub/wd/hub" );
 				
 			DesiredCapabilities caps_IE = DesiredCapabilities.internetExplorer();
 			caps_IE.setVersion("11");
@@ -64,8 +64,8 @@ public class OpencartLogin {
 			
 			DesiredCapabilities caps = DesiredCapabilities.firefox();
 			caps.setCapability("platform","win7");
-			caps.setCapability("version","43");
-			caps.setCapability("secnarioname","FinalTest777");
+			caps.setCapability("version","46");
+			caps.setCapability("secnarioname","Yash_Test_Opencart_7");
 			
 			RemoteWebDriver driver = 
 							//new FirefoxDriver();

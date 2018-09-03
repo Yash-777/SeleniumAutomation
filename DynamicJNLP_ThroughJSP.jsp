@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="application/x-java-jnlp-file" pageEncoding="ISO-8859-1"%>
 
 <%
+// http://www.oracle.com/technetwork/java/javase/jws-white-paper-150004.pdf
 int xmx = 1024;
 int xms = 256;
 String JVM_Options = "-Xss8m"; /* "-ea -Xincgc"; "-Dsun.java2d.noddraw=true"; */
