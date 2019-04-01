@@ -17,6 +17,9 @@ import com.github.server.file.GeckoDriver;
 /**
  * 
  * Alert IGNORE « https://github.com/mozilla/geckodriver/issues/617
+ * 
+ * Solved with Firefox 63 on words.
+ * driver.manage().window().maximize(); - Condition version above 63 and gecho-driver.
  * @author yashwanth.m
  *
  */
@@ -51,7 +54,7 @@ public class Selenium_3 {
 			profile.setEnableNativeEvents( true );
 			profile.setPreference("browser.link.open_newwindow.disabled_in_fullscreen", true);
 			
-			if ( parseInt <= 47 ) {
+			if ( parseInt <= 47 ) { // If version is 47 then use Selenium version 2.53.1
 				// https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette
 				System.out.println("Marionette Driver « INFO	Enabled via --marionette");
 				//some more prefs:

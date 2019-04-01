@@ -10,7 +10,9 @@
 	</organization>
 	<properties>
 		<seleniumVersion>2.53.0</seleniumVersion>
-		<!-- <seleniumVersion>3.5.1</seleniumVersion> -->
+		<!-- 2.53.0, 2.53.1, 3.5.1, 3.9.0, 3.12.0 -->
+		
+		<poi.version>3.17</poi.version>
 	</properties>
 
   <dependencies>
@@ -24,7 +26,7 @@
 	<dependency>
 	  <groupId>io.github.Yash-777</groupId>
 	  <artifactId>SeleniumWebDrivers</artifactId>
-	  <version>1.0.0-SNAPSHOT</version>
+	  <version>1.0.0</version>
 	    <!-- <scope>system</scope>
 	    <systemPath>E://SeleniumWebDrivers.jar</systemPath> -->
 	</dependency>
@@ -57,6 +59,45 @@
 	<systemPath>${basedir}/libs/selenium-server-standalone-2.53.0.jar</systemPath>
 	<scope>system</scope>
 	 -->
+	
+	<!-- Reading .xls and .xlsx files -->
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+		<version>${poi.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi-ooxml</artifactId>
+		<version>${poi.version}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-collections4</artifactId>
+		<version>4.1</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+	<dependency>
+		<groupId>commons-codec</groupId>
+		<artifactId>commons-codec</artifactId>
+		<version>1.11</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
+	<dependency>
+	    <groupId>com.relevantcodes</groupId>
+	    <artifactId>extentreports</artifactId>
+	    <version>2.41.2</version>
+	</dependency>
+		<!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+		<dependency>
+		    <groupId>org.freemarker</groupId>
+		    <artifactId>freemarker</artifactId>
+		    <version>2.3.23</version>
+		</dependency>
+			
 
   </dependencies>
   <build>

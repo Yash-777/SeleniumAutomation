@@ -1,10 +1,14 @@
 package com.github.web.automation;
 
+import java.util.LinkedList;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -105,6 +109,8 @@ public class Javascript_Actions {
 			jse.executeScript(elementStyle, element_node);
 		} else {
 			try {
+				locator = locator.replaceAll("'", "\\\\'");
+				
 				StringBuffer border = new StringBuffer();
 				border.append("if (document.evaluate) {");
 				border.append("var elem = document.evaluate('"+locator+"', window.document, null, 9, null ).singleNodeValue;");
@@ -134,6 +140,9 @@ public class Javascript_Actions {
 	
 	public boolean clickUsingJavaScript( String locator ) {
 		boolean returnVal = false;
+		
+		locator = locator.replaceAll("'", "\\\\'");
+		
 		StringBuffer click = new StringBuffer();
 		click.append("if (document.evaluate) {");
 		click.append("var elem = document.evaluate('"+locator+"', window.document, null, 9, null ).singleNodeValue;");
@@ -145,16 +154,20 @@ public class Javascript_Actions {
 		
 		return returnVal;
 	}
-	
-	public void click_sendTextUsingJavaScript( String locator, boolean sendKeys, String sentText ) {
+	public String sendTextJs(String locator, String sentText ) {
+		locator = locator.replaceAll("'", "\\\\'");
+		sentText = sentText.replaceAll("'", "\\\\'");
+		
 		StringBuffer send = new StringBuffer();
 		send.append("if (document.evaluate) {");
 		send.append("var elem = document.evaluate('"+locator+"', window.document, null, 9, null ).singleNodeValue;");
-		send.append("elem.click();");
-		send.append("ele.value="+sentText+";" );
+		//send.append("elem.click();");
+		send.append("elem.value='"+sentText+"';" );
 		send.append("}");
-		
-		jse.executeScript( send.toString() );
+		return send.toString();
+	}
+	public void click_sendTextUsingJavaScript( String locator, String sentText ) {
+		jse.executeScript( sendTextJs(locator, sentText) );
 	}
 
 	/**
@@ -179,6 +192,8 @@ public class Javascript_Actions {
 	 * @return
 	 */
 	public boolean isElementEditable( String locator ) {
+		locator = locator.replaceAll("'", "\\\\'");
+		
 		StringBuffer send = new StringBuffer();
 		send.append("var path = "+locator+"/@readonly';");
 		send.append("var elem = document.evaluate('count('path')', window.document, null, 0, null);");
@@ -191,5 +206,34 @@ public class Javascript_Actions {
 		}
 		// To avoid - Exception: invalid element state: Element must be user-editable in order to clear it.
 		return false;
+	}
+	
+	public LinkedList<Object> click_Actions(String locator) {
+		locator = locator.replaceAll("'", "\\\\'");
+		
+		LinkedList<Object> obj = new LinkedList<>();
+		By findBy = By.xpath( locator );
+		WebElement searchElement = 
+				explicitWait.until(ExpectedConditions.visibilityOfElementLocated( findBy ));
+				//driver.findElement(searchElement);
+		
+		//searchElement.click();
+		System.out.println("Actions Click.");
+		Actions action = new Actions(driver);
+		action.moveToElement( searchElement ).click();
+		
+		obj.add(searchElement);
+		obj.add(action);
+		return obj;
+	}
+	public void sendText_Actions(String locator, String value) {
+		locator = locator.replaceAll("'", "\\\\'");
+		
+		LinkedList<Object> obj = click_Actions(locator);
+		WebElement searchElement = (WebElement) obj.getFirst();
+		Actions action = (Actions) obj.getLast();
+		
+		searchElement.clear();
+		action.sendKeys(searchElement, value).build().perform();
 	}
 }

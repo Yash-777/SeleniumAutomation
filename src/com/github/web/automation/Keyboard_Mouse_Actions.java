@@ -15,6 +15,8 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.github.web.automation.Verifications.ByType;
@@ -67,6 +69,19 @@ public class Keyboard_Mouse_Actions extends ScreenShot {
 					type = ActionType.WIN;
 				}
 			}
+		} else if ( type == ActionType.FILE_DETECTOR ) {
+			LocalFileDetector detector = new LocalFileDetector();
+			File localFile = detector.getLocalFile( filePath );
+			RemoteWebElement input = (RemoteWebElement) driver.findElement(By.xpath(locator));
+			input.setFileDetector(detector);
+			input.sendKeys(localFile.getAbsolutePath());
+			input.click();
+			/*
+			 * String zip = new Zip().zipFile(localFile.getParentFile(), localFile);
+			 * Response response = execute(DriverCommand.UPLOAD_FILE, ImmutableMap.of("file", zip));
+			 * return (String) response.getValue();
+			 */
+			return true;
 		}
 		try {
 			element.click();
@@ -97,7 +112,7 @@ public class Keyboard_Mouse_Actions extends ScreenShot {
 				robot.keyRelease(KeyEvent.VK_ENTER);
 				return true;
 			} else if ( type == ActionType.WIN || type == ActionType.LINUX ) { // Ctrl + V to paste the content.
-				
+				// paste to the current using view [In debug mode pastes it in eclipse.]
 				robot.keyPress(KeyEvent.VK_CONTROL);
 				robot.keyPress(KeyEvent.VK_V);
 				robot.keyRelease(KeyEvent.VK_V);
@@ -115,6 +130,7 @@ public class Keyboard_Mouse_Actions extends ScreenShot {
 				// takeElementScreenshot(element);
 				try {
 					File tempScreen = captureScreenAsFile();
+					
 					File screen = new File( getFileName() );
 					FileUtils.copyFile( tempScreen , screen);
 				} catch (IOException e) {

@@ -153,7 +153,7 @@ public final class Browser extends BrowserDrivers {
 			//Set language
 			profile.setPreference("intl.accept_languages", "no,en-us,en");
 			
-			//some more prefs:
+			//some more prefs: https://support.mozilla.org/en-US/questions/1232918
 			profile.setPreference( "app.update.enabled", false);
 			profile.setPreference( "browser.tabs.autoHide", true);
 			

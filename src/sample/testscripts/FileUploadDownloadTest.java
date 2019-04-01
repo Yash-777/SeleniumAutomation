@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -12,13 +13,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.io.Zip;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.DriverCommand;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.remote.Response;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.github.web.automation.Browser;
+import com.google.common.collect.ImmutableMap;
 
 import enums.ActionType;
 import enums.LocalBrowser;
@@ -33,15 +40,21 @@ public class FileUploadDownloadTest {
 
 	static RemoteWebDriver driver;
 	public static void main(String[] args) throws Exception {
-		/*LocalBrowser browserType = LocalBrowser.FIREFOX;
+		LocalBrowser browserType = LocalBrowser.CHROME;
 		Browser browserObj = new Browser( browserType );
 		
 		System.out.println( browserObj.toString() );
 		RemoteWebDriver webDriver = browserObj.getWebDriver();
 		driver = webDriver;
 		
-		uploadTest( driver );*/
-		fileDownload();
+		String baseUrl = "https://www.filehosting.org/";
+		driver.get( baseUrl );
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		FileUpload("//input[@name='upload_file'][@type='file'][1]", "D:\\log.txt", ActionType.SEND_KEYS);
+		
+		//uploadTest( driver );
+		//fileDownload();
 		
 		System.out.println("Enter something in console to quit the browser and driver.");
 		try {
@@ -99,6 +112,19 @@ public class FileUploadDownloadTest {
 		WebElement element = explicitWait.until(ExpectedConditions.elementToBeClickable( By.xpath(locator) ));
 		if( type == ActionType.SEND_KEYS ) {
 			element.sendKeys( filePath );
+			return true;
+		} else if ( type == ActionType.FILE_DETECTOR ) {
+			LocalFileDetector detector = new LocalFileDetector();
+			File localFile = detector.getLocalFile( filePath );
+			RemoteWebElement input = (RemoteWebElement) driver.findElement(By.xpath(locator));
+			input.setFileDetector(detector);
+			input.sendKeys(localFile.getAbsolutePath());
+			input.click();
+			/*
+			 * String zip = new Zip().zipFile(localFile.getParentFile(), localFile);
+			 * Response response = execute(DriverCommand.UPLOAD_FILE, ImmutableMap.of("file", zip));
+			 * return (String) response.getValue();
+			 */
 			return true;
 		} else {
 			try {

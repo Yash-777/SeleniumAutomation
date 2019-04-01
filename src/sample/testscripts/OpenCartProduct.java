@@ -100,7 +100,7 @@ public class OpenCartProduct {
 		boolean Textarea = page.sendText( xpaths[17], ByType.XPATH_EXPRESSION, "TextArea Multiline Text." );
 		System.out.println("Text Sent : "+ Textarea);
 		
-		boolean File_Upload = page.FileUpload( xpaths[19], ByType.XPATH_EXPRESSION, "D:\\log.txt", ActionType.SEND_KEYS );
+		boolean File_Upload = page.FileUpload( xpaths[19], ByType.XPATH_EXPRESSION, "D:\\log.txt", ActionType.FILE_DETECTOR );
 		System.out.println("Element Clicked : "+File_Upload);
 		
 		boolean Date_Calender = page.clickOnElement( xpaths[21], ByType.XPATH_EXPRESSION );

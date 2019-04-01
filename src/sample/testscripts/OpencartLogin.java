@@ -19,6 +19,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * 
  * https://demo.opencart.com/index.php?route=product/product&product_id=41
  * 
+ * HTTP Status 403 - Access to the requested resource has been denied | forbidden
+	Wrong Credentials. The user credentials are wrong!
+
  * @author yashwanth.m
  *
  */
@@ -47,7 +50,7 @@ public class OpencartLogin {
 
 			URL url = 
 				//new URL( String.format("http://%s:4444/wd/hub", GRIDINFO.HOSTIP.toString() ));
-				new URL( "http://Rajukasarapu:a31a58f92c423aa2401ef5f5998252fe@172.16.21.109:8080/ClicHub/wd/hub" );
+				new URL( "http://Yash:a31a58f92c423aa2401ef5f5998252fe@localhost:8080/ClicHub/wd/hub" );
 				
 			DesiredCapabilities caps_IE = DesiredCapabilities.internetExplorer();
 			caps_IE.setVersion("11");
@@ -62,10 +65,10 @@ public class OpencartLogin {
 			caps_FF.setPlatform(Platform.WINDOWS);
 			caps_FF.setCapability("name","YashTest2");
 			
-			DesiredCapabilities caps = DesiredCapabilities.firefox();
-			caps.setCapability("platform","win7");
-			caps.setCapability("version","46");
-			caps.setCapability("secnarioname","Yash_Test_Opencart_7");
+			DesiredCapabilities caps = DesiredCapabilities.chrome();
+			caps.setCapability("platform","win10");
+			caps.setCapability("version","63");
+			caps.setCapability("secnarioname","KT_Chrome63"); //Yash_Test_Opencart_7");
 			
 			RemoteWebDriver driver = 
 							//new FirefoxDriver();

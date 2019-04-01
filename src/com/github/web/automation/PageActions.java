@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,7 +28,6 @@ import enums.LocalBrowser;
  *
  */
 public class PageActions extends Verifications {
-	
 	
 	/** <P>IMPLICIT wait - Global wait for all Elements in an Application.
 	 * Driver wait for all the commands over the 
@@ -111,7 +110,7 @@ public class PageActions extends Verifications {
 	 * @param locatorType
 	 * @return
 	 */
-	private boolean webElementClick( String locator, ByType locatorType ) {
+	public boolean webElementClick( String locator, ByType locatorType ) {
 		By findBy = findBy(locator, locatorType);
 		try {
 			WebElement element = explicitWait.until(ExpectedConditions.elementToBeClickable( findBy ));
@@ -138,7 +137,7 @@ public class PageActions extends Verifications {
 	 * @param locatorType
 	 * @return
 	 */
-	private boolean actionsClick( String locator, ByType locatorType ) {
+	public boolean actionsClick( String locator, ByType locatorType ) {
 		boolean isElementClicked = false;
 		By findBy = findBy(locator, locatorType);
 		System.out.println("Actions Click.");
@@ -176,14 +175,15 @@ public class PageActions extends Verifications {
 		return isElementClicked;
 	}
 	
+	// Element Send Keys « https://w3c.github.io/webdriver/#element-send-keys
 	// InvalidElementStateException: Element must be user-editable in order to clear it.
 	public boolean sendText(String locator, ByType locatorType, String textToSend) {
 		
 		WebElement webElement = getWebElement(locator, locatorType);
 		if( webElement != null ) {
-			webElement.clear();
-			webElement.sendKeys(textToSend);
-			
+			//webElement.clear();
+			// https://emicalculator.net/ « https://stackoverflow.com/a/3254152/5081877
+			webElement.sendKeys(Keys.chord(Keys.CONTROL, "a"), textToSend); // Keys.COMMAND - MAC
 			if ( takeScreenShot ) {
 				takeElementScreenshot(webElement);
 			}
@@ -191,7 +191,27 @@ public class PageActions extends Verifications {
 		}
 		return false;
 	}
-	
+	public boolean sendText_GeckoDriver(String locator, ByType locatorType, String textToSend) {
+		
+		WebElement webElement = getWebElement(locator, locatorType);
+		if( webElement != null ) {
+			webElement.clear();
+			webElement.sendKeys(textToSend); 
+			// https://emicalculator.net/ « https://stackoverflow.com/a/3254152/5081877
+			/*try { // After clearing we are getting default values.
+				Thread.sleep( 1000 * 1 );
+				webElement.sendKeys(Keys.chord(Keys.CONTROL, "a"), textToSend); // Keys.COMMAND - MAC
+				Thread.sleep( 1000 * 1 );
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}*/
+			if ( takeScreenShot ) {
+				takeElementScreenshot(webElement);
+			}
+			return true;
+		}
+		return false;
+	}
 	public String getText(String locator, ByType locatorType) {
 		
 		WebElement webElement = getWebElement(locator, locatorType);

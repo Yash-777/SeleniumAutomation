@@ -6,12 +6,18 @@ https://www.browserstack.com/automate/capabilities
 https://endtest.io/
 https://loadfocus.com/blog/2013/09/05/how-to-locate-web-elements-with-selenium-webdriver/
 
+https://www.froglogic.com/squish/
+
 Custom DropDowns:
 	https://www.utest.com/sign-up
 	https://codility.com/trial/
 
-File Upload Attach Document:
+File Upload Attach Document: [.pdf, docx, .xlsx, .csv, .txt, .zip] File Format Not Supported
 	https://www.testing-whiz.com/download
 	
 Sliders
 	http://rangeslider.js.org/
+	
+« getText() will only get the inner text of an element. To get the value, you need to use getAttribute().
+	WebElement TxtBoxContent = driver.findElement(By.id(WebelementID));
+	System.out.println("Printing " + TxtBoxContent.getAttribute("value"));
